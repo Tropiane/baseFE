@@ -1,0 +1,78 @@
+@use '../_colors.scss' as *;
+
+@media screen and (min-width: 1024px){
+    .aboutUs{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 400px;
+            clip-path: xywh(0 5px 100% 75% round 15% 0);
+        }
+    }
+
+            .aboutUsContent{
+            display: flex;
+                flex-direction: column;
+                width: 40%;
+            p{
+                padding: 1rem;
+                border-radius: 10px;
+                border: 1px solid $secondary-color;
+                font-size: 2rem;
+            }
+        }
+    
+}
+
+@media screen and (max-width: 1024px) and (min-width: 480px){
+    .aboutUs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 400px;
+            clip-path: xywh(0 5px 100% 75% round 15% 0);
+        }
+
+                .aboutUsContent{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        
+            p{
+                padding: 1rem;
+                border-radius: 10px;
+                border: 1px solid $secondary-color;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+@media screen and (max-width: 480px){
+    .aboutUs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 300px;
+            
+            clip-path: xywh(0 5px 100% 75% round 15% 0);
+        }
+
+        .aboutUsContent{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        
+            p{
+                padding: 1rem;
+                border-radius: 10px;
+                border: 1px solid $secondary-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,1260 @@
+@charset "UTF-8";
+.fontNav {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.textFont {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.titleFont {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-size: 4rem;
+}
+
+.secondTitleFont {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 3.2rem;
+}
+
+.thirdTitleFont {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.fourthTitleFont {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.linkFont {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.buttonFont {
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.listFont {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+.spanFont {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+body #root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: 100vw;
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+
+@media (max-width: 480px) {
+  header {
+    animation: desplegarMobile 1s ease-in-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  header .title {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+  header .title img {
+    width: 150px;
+  }
+  header .headerPresentation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  header .navPhone {
+    gap: 1rem;
+    z-index: 1;
+  }
+  header .navPhone details summary {
+    list-style: none;
+    border-radius: 50%;
+    padding: 1rem;
+  }
+  header .navPhone details summary .menuIcon {
+    font-size: 2rem;
+  }
+  header .navPhone details summary .menuIcon:active {
+    color: #3d5a80;
+  }
+  header .navPhone details .navPhoneLinks {
+    list-style: none;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  header .navPhone details .navPhoneLinks a {
+    color: #293241;
+    border-bottom: 1px solid #3d5a80;
+    padding: 0;
+    margin: 1rem;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 480px) {
+  header {
+    animation: desplegarTablet 1s ease-in-out;
+    height: 60vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  header .navPhone {
+    display: flex;
+    justify-content: start;
+    align-items: self-start;
+    flex-direction: row;
+    gap: 1rem;
+    z-index: 1;
+    padding: 1rem;
+  }
+  header .navPhone details summary {
+    list-style: none;
+    background-color: #e0fbfc;
+    border-radius: 50%;
+    padding: 1rem;
+  }
+  header .navPhone details summary .menuIcon {
+    font-size: 2rem;
+  }
+  header .navPhone details .navPhoneLinks {
+    list-style: none;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  header .navPhone details .navPhoneLinks a {
+    color: #293241;
+    border-bottom: 1px solid #3d5a80;
+    padding: 0;
+    margin: 1rem;
+  }
+  header nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+  header .title {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    z-index: 1;
+  }
+  header .title img {
+    width: 200px;
+  }
+  header .headerPresentation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 1024px) {
+  header {
+    animation: desplegar 1s ease-in-out;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+  header .title {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    justify-content: center;
+    align-items: center;
+  }
+  header .title img {
+    width: 300px;
+  }
+  header .headerPresentation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+}
+@keyframes desplegar {
+  from {
+    height: 0vh;
+  }
+  to {
+    height: 80;
+  }
+}
+@keyframes desplegarMobile {
+  from {
+    height: 0vh;
+  }
+  to {
+    height: 70;
+  }
+}
+@keyframes desplegarTablet {
+  from {
+    height: 0vh;
+  }
+  to {
+    height: 60;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main {
+    margin-top: 5%;
+  }
+  main .presentation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  main .presentation .presentation-header {
+    flex: 1;
+    text-align: left;
+  }
+  main .presentation img {
+    flex: 1;
+    max-height: 90vh;
+    border-radius: 10px;
+  }
+  main .targetCarouselContainer {
+    width: 100%;
+  }
+  main .targetCarouselContainer .targetInCarousel {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 480px) {
+  main {
+    margin-top: 5rem;
+    width: 100vw;
+  }
+  main .presentation {
+    display: flex;
+  }
+  main .presentation img {
+    height: 50vh;
+  }
+  main .presentation .presentation-header {
+    width: 70vw;
+  }
+  main .targetContainer {
+    margin-top: 5rem;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  main .targetContainer .targetCarouselContainer {
+    width: 100vw;
+  }
+  main .targetContainer .targetCarouselContainer .targetCarouselItem {
+    min-width: 100%;
+  }
+  main .targetContainer .targetCarouselContainer .targetCarouselItem .targetInCarousel {
+    width: 80%;
+  }
+}
+@media (max-width: 480px) {
+  main {
+    margin-top: 8rem;
+    margin-bottom: 5rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  main .targetContainer {
+    margin-top: 10rem;
+    padding: 1rem;
+    width: 100%;
+  }
+  main .presentation {
+    padding: 1rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  main .presentation .presentation-header {
+    width: 100vw;
+  }
+  main .presentation img {
+    height: 60vh;
+  }
+  .targetContainer {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .targetContainer .targetCarousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 70vh;
+  }
+  .targetContainer .targetCarousel .targetCarouselContainer {
+    display: flex;
+    width: 100vw;
+  }
+  .targetContainer .targetCarousel .targetCarouselContainer .targetCarouselItem {
+    min-width: 100%;
+  }
+  .targetContainer .targetCarousel .targetCarouselContainer .targetCarouselItem .targetInCarousel {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  footer .socialMedia ul {
+    padding: 0;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+  }
+  footer .footerForm form {
+    display: flex;
+    flex-direction: column;
+  }
+  footer .footerNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+  }
+  footer .footerContact {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: start;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 480px) {
+  footer {
+    text-align: center;
+  }
+  footer .socialMedia ul {
+    gap: 1rem;
+  }
+  footer .footerForm form {
+    width: 150px;
+  }
+  footer .footerNav a {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100vw;
+    min-width: 100vw;
+  }
+  footer .socialMedia ul {
+    justify-self: center;
+    gap: 1rem;
+  }
+  footer .socialMedia ul svg {
+    font-size: 1rem;
+  }
+  footer .footerContact {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fontNav {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    text-decoration: none;
+  }
+  .textFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+  .titleFont {
+    font-family: "Playfair Display", serif;
+    font-size: 6rem;
+  }
+  .secondTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+  }
+  .thirdTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 1.7rem;
+  }
+  .fourthTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .linkFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .buttonFont {
+    font-family: "Quicksand", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .listFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+  .spanFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 480px) {
+  .fontNav {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  .textFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .titleFont {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+  }
+  .secondTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .thirdTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  .fourthTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .linkFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .buttonFont {
+    font-family: "Quicksand", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .listFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .spanFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fontNav {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  .textFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+  }
+  .titleFont {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .secondTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .thirdTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .fourthTitleFont {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .linkFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .buttonFont {
+    font-family: "Quicksand", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .listFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .spanFont {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .aboutUs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .aboutUs img {
+    width: 400px;
+    clip-path: xywh(0 5px 100% 75% round 15% 0);
+  }
+  .aboutUsContent {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+  .aboutUsContent p {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #98c1d9;
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 480px) {
+  .aboutUs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .aboutUs img {
+    width: 400px;
+    clip-path: xywh(0 5px 100% 75% round 15% 0);
+  }
+  .aboutUs .aboutUsContent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .aboutUs .aboutUsContent p {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #98c1d9;
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .aboutUs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .aboutUs img {
+    width: 300px;
+    clip-path: xywh(0 5px 100% 75% round 15% 0);
+  }
+  .aboutUs .aboutUsContent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .aboutUs .aboutUsContent p {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #98c1d9;
+  }
+}
+#root {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "header" "main" "footer";
+}
+#root header {
+  grid-area: header;
+}
+#root main {
+  grid-area: main;
+}
+#root footer {
+  grid-area: footer;
+}
+
+@media screen and (min-width: 1024px) {
+  header {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    grid-template-areas: "navBar title" "presentation presentation";
+  }
+  header nav {
+    grid-area: navBar;
+  }
+  header .title {
+    grid-area: title;
+  }
+  header .headerPresentation {
+    grid-area: presentation;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 480px) {
+  header {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    grid-template-areas: "title navBar" "presentation presentation";
+  }
+  header nav {
+    grid-area: navBar;
+  }
+  header .title {
+    grid-area: title;
+  }
+  header .headerPresentation {
+    grid-area: presentation;
+  }
+}
+@media screen and (max-width: 480px) {
+  header {
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto;
+    grid-template-areas: "navBar" "title" "presentation";
+  }
+  nav {
+    grid-area: navBar;
+  }
+  .title {
+    grid-area: title;
+  }
+  .headerpresentation {
+    grid-area: presentation;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto;
+    grid-template-areas: "presentation presentation" "target target";
+  }
+  main .presentation {
+    grid-area: presentation;
+  }
+  main .targetCarouselContainer {
+    grid-area: target;
+  }
+  main .aboutUs {
+    grid-area: aboutUs;
+  }
+}
+footer {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: "social social social" "form navBar contact";
+}
+footer .socialMedia {
+  grid-area: social;
+}
+footer .footerForm {
+  grid-area: form;
+}
+footer .footerNav {
+  grid-area: navBar;
+}
+footer .footerContact {
+  grid-area: contact;
+}
+
+@media screen and (max-width: 1024px) {
+  footer {
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto;
+    grid-template-areas: "social" "navBar" "form" "contact";
+  }
+  footer .socialMedia {
+    grid-area: social;
+  }
+  footer .footerForm {
+    grid-area: form;
+  }
+  footer .footerNav {
+    grid-area: navBar;
+  }
+  footer .footerContact {
+    grid-area: contact;
+  }
+}
+@media screen and (max-width: 480px) {
+  footer {
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto;
+    grid-template-areas: "social" "form" "navBar" "contact";
+  }
+  footer .socialMedia {
+    grid-area: social;
+  }
+  footer .footerForm {
+    grid-area: form;
+  }
+  footer .footerNav {
+    grid-area: navBar;
+  }
+  footer .footerContact {
+    grid-area: contact;
+  }
+}
+.targetInCarousel {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "title" "description" "details";
+}
+.targetInCarousel h3 {
+  grid-area: title;
+}
+.targetInCarousel p {
+  grid-area: description;
+}
+.targetInCarousel details {
+  grid-area: details;
+}
+
+@media screen and (max-width: 1024px) {
+  .targetInCarousel {
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto;
+    grid-template-areas: "image" "title" "description" "details";
+  }
+  img {
+    grid-area: image;
+  }
+  h3 {
+    grid-area: title;
+  }
+  p {
+    grid-area: description;
+  }
+  details {
+    grid-area: details;
+  }
+}
+@media screen and (max-width: 480px) {
+  .targetInCarousel {
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto;
+    grid-template-areas: "image" "title" "description" "details";
+  }
+  img {
+    grid-area: image;
+  }
+  h3 {
+    grid-area: title;
+  }
+  p {
+    grid-area: description;
+  }
+  details {
+    grid-area: details;
+  }
+}
+header {
+  margin: 0;
+  padding: 0;
+  background-image: url("https://images.unsplash.com/photo-1707388863824-ef70a83ec52c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+}
+header nav {
+  margin-bottom: 0;
+  gap: 1rem;
+}
+header nav a {
+  margin-top: 7rem;
+  color: #293241;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+header nav a:hover {
+  transition: 0.2s ease-in-out;
+  border-bottom: 3px solid #e0fbfc;
+  padding-bottom: 2px;
+  color: #293241;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.targetContainer {
+  padding: 2rem;
+}
+.targetContainer h2 {
+  margin-bottom: 2rem;
+  color: #3d5a80;
+  text-align: center;
+}
+.targetContainer .targetCarousel {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+.targetContainer .targetCarousel .targetCarouselContainer {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+.targetContainer .targetCarousel .targetCarouselContainer .targetCarouselItem {
+  box-sizing: border-box;
+  padding: 1rem;
+}
+.targetContainer .targetCarousel .targetCarouselControls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.targetContainer .targetCarousel .targetCarouselControls button {
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+.targetContainer .targetCarousel .targetCarouselControls button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.ticketsContainer {
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.ticketTarget {
+  background: #ffffff;
+  border: 1px solid #9e9a9a;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 300px;
+}
+.ticketTarget:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+.ticketTarget li {
+  font-size: 0.95rem;
+  padding: 0.2rem 0;
+  border-bottom: 1px dashed #8c9ab4;
+  list-style: circle;
+}
+.ticketTarget li:last-child {
+  border-bottom: none;
+}
+.ticketTarget li input {
+  border-radius: 1rem;
+  border: 1px solid #8c9ab4;
+  text-align: center;
+}
+.ticketTarget textarea {
+  resize: vertical;
+  min-height: 60px;
+  max-height: 150px;
+  font-size: 0.9rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e0;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+.ticketTarget textarea:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.3);
+}
+.ticketTarget .ticketButtons {
+  display: flex;
+  flex-direction: row;
+}
+.ticketTarget .ticketButtons .commentTicket {
+  background: linear-gradient(135deg, #3d5a80, #98c1d9);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+.ticketTarget .ticketButtons .deleteTicket {
+  background: linear-gradient(135deg, red, rgb(238, 126, 126));
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.1s;
+}
+.ticketTarget .ticketButtons .deleteTicket:active {
+  transition: 0.1s;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  transform: scale(0.9);
+}
+
+main .presentation {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+main .presentation:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+}
+main .presentation .presentation-header {
+  padding: 1rem;
+}
+main .presentation .presentation-header h1 {
+  color: #293241;
+  background: linear-gradient(135deg, #3d5a80, #98c1d9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+main .presentation .presentation-header button {
+  background: linear-gradient(135deg, #3d5a80, #98c1d9);
+  border: none;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+main .presentation .presentation-header button:hover {
+  background: linear-gradient(135deg, #98c1d9, #3d5a80);
+  transform: scale(1.05);
+  animation: rebotar 0.5s ease-in-out;
+}
+main .presentation img {
+  border-radius: 15px;
+  margin-top: 2rem;
+  transition: all 0.3s ease;
+}
+main .presentation img:hover {
+  transform: scale(1.03);
+}
+main .login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .login form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 1rem;
+}
+main .login form input {
+  border: none;
+  background-color: #98c1d9;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+main .login form input:active {
+  background-color: #e0fbfc;
+}
+main .login form button {
+  border: none;
+  background-color: #293241;
+  color: #e0fbfc;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: 0.1s;
+  border-radius: 1.5rem;
+}
+main .login form button:active {
+  background-color: #e0fbfc;
+  color: #293241;
+  transition: 0.1s;
+  transform: scale(0.9);
+}
+
+@keyframes rebotar {
+  0%, 50%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+}
+footer {
+  border-top: 1px solid black;
+  height: auto;
+  padding: 2rem;
+  margin-top: 5rem;
+}
+footer .socialMedia ul {
+  padding: 0;
+  margin: 0 auto 2rem auto;
+  gap: 2rem;
+}
+footer .socialMedia ul li {
+  list-style: none;
+}
+footer .socialMedia ul li a {
+  text-decoration: none;
+  color: black;
+}
+footer .socialMedia ul li a svg {
+  font-size: 2rem;
+}
+footer .footerForm form {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 200px;
+  gap: 10px;
+  padding: 1rem;
+}
+footer .footerForm form input {
+  border-radius: 5px;
+  border: 1px solid #98c1d9;
+}
+footer .footerForm form button {
+  border-radius: 5px;
+  background-color: #293241;
+  border: none;
+  height: 30px;
+  color: #e0fbfc;
+}
+footer .footerNav a {
+  color: #3d5a80;
+  font-size: 1rem;
+}
+footer .footerContact h4 {
+  color: #3d5a80;
+  border-bottom: 1px solid #3d5a80;
+}
+footer .footerContact p {
+  color: #3d5a80;
+}
+
+.targetInCarousel {
+  height: auto;
+  width: 100%;
+  min-height: 70vh;
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(238, 108, 77, 0.3);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+.targetInCarousel:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  border-color: #3d5a80;
+}
+.targetInCarousel h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  padding: 0.6rem 1rem;
+  color: #293241;
+  background: linear-gradient(135deg, #98c1d9, #3d5a80);
+  border-radius: 15px;
+  color: #fff;
+  display: inline-block;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+}
+.targetInCarousel p {
+  color: rgba(41, 50, 65, 0.85);
+  margin: 0.8rem 0;
+  line-height: 1.5;
+  max-width: 90%;
+}
+.targetInCarousel ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+.targetInCarousel ul li {
+  color: rgba(41, 50, 65, 0.9);
+  transition: color 0.2s;
+}
+.targetInCarousel ul li:before {
+  content: "✔";
+  color: #3d5a80;
+  margin-right: 0.5rem;
+}
+.targetInCarousel ul li:hover {
+  color: #3d5a80;
+}
+.targetInCarousel ul li .spanFont {
+  color: #ee6c4d;
+  font-weight: 600;
+}
+.targetInCarousel .price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #3d5a80;
+  margin: 1rem 0;
+}
+.targetInCarousel .cta-button {
+  display: inline-block;
+  margin-top: auto;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #3d5a80, #98c1d9);
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+.targetInCarousel .cta-button:hover {
+  background: linear-gradient(135deg, #98c1d9, #3d5a80);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .targetInCarousel {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  .targetInCarousel img {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .targetInCarousel {
+    padding: 1rem;
+  }
+  .targetInCarousel h3 {
+    font-size: 1.2rem;
+  }
+  .targetInCarousel img {
+    width: 120px;
+  }
+  .targetInCarousel .cta-button {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+}
+.aboutUs {
+  text-align: start;
+  padding: 10rem;
+}
+.aboutUs h1 {
+  color: #3d5a80;
+}
+
+/*# sourceMappingURL=App.css.map */

@@ -1,0 +1,148 @@
+@use '../../_colors.scss' as *;
+
+.targetContainer {
+  padding: 2rem;
+
+  h2 {
+    margin-bottom: 2rem;
+    color: $primary-color;
+    text-align: center;
+  }
+
+  // Carousel
+  .targetCarousel {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+
+    .targetCarouselContainer {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      will-change: transform;
+      .targetCarouselItem {
+        box-sizing: border-box;
+        padding: 1rem;
+    }
+    }
+
+    .targetCarouselControls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+
+      button {
+        pointer-events: auto;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 0.8rem 1rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+  }
+}
+
+.ticketsContainer {
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.ticketTarget {
+  background: #ffffff;
+  border: 1px solid #9e9a9a;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 300px;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  }
+
+   li {
+      font-size: 0.95rem;
+      padding: 0.2rem 0;
+      border-bottom: 1px dashed #8c9ab4;
+      list-style: circle;
+
+      &:last-child {
+        border-bottom: none;
+      }
+      input{
+        border-radius: 1rem;
+        border: 1px solid #8c9ab4;
+        text-align: center;
+      }
+    }
+
+  textarea {
+    resize: vertical;
+    min-height: 60px;
+    max-height: 150px;
+    font-size: 0.9rem;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e0;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+      border-color: #3182ce;
+      box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.3);
+    }
+  }
+
+  .ticketButtons{
+    display: flex;
+    flex-direction: row;
+    .commentTicket{
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .deleteTicket{
+        background: linear-gradient(135deg, red, rgb(238, 126, 126));
+        border: none;
+        border-radius: 1rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .1s;
+        &:active{
+          transition: .1s;
+          background-color: red;
+          color: white;
+          font-weight: bold;
+          transform: scale(.9);
+        }
+    }
+  }
+}

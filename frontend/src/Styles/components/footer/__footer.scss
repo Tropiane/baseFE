@@ -1,0 +1,59 @@
+@use '../../_colors.scss' as *;
+footer{
+    border-top: 1px solid black;
+    height: auto;
+    padding: 2rem;
+    margin-top: 5rem;
+    .socialMedia{
+        ul{
+            padding: 0;
+            margin: 0 auto 2rem auto;
+            gap: 2rem;
+            li{
+                list-style: none;
+                a{
+                    text-decoration: none;
+                    color: black;
+                    svg{
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+    .footerForm{
+        form{
+            border: 1px solid gray;
+            border-radius: 10px;
+            width: 200px;
+            gap: 10px;
+            padding: 1rem;
+            input{
+                border-radius: 5px;
+                border: 1px solid $secondary-color;
+            }
+            button{
+                border-radius: 5px;
+                background-color: $black-color;
+                border: none;
+                height: 30px;
+                color: $white-color;
+            }
+        }
+    }
+    .footerNav{
+        a{
+            color: $primary-color;
+            font-size: 1rem;
+        }
+    }
+    .footerContact{
+        h4{
+            color: $primary-color;
+            border-bottom: 1px solid $primary-color;
+        }
+        p{
+            color: $primary-color;
+        }
+    }
+}

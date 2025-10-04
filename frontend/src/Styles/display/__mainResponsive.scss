@@ -1,0 +1,123 @@
+@media screen and (min-width: 1024px) {
+  main {
+    margin-top: 5%;
+    .presentation {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+
+      .presentation-header {
+        flex: 1;
+        text-align: left;
+      }
+
+      img {
+        flex: 1;
+        max-height: 90vh;
+        border-radius: 10px;
+      }
+    }
+
+    .targetCarouselContainer {
+      width: 100%;
+      .targetInCarousel{
+        width: 80%;
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 1024px) and ( min-width: 480px) {
+  main {
+    margin-top: 5rem;
+    width: 100vw;
+    .presentation {
+      display: flex;
+      
+
+      img {
+        height: 50vh;
+      }
+
+      .presentation-header {
+        width: 70vw;
+      }
+    }
+
+    .targetContainer {
+      margin-top: 5rem;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+
+      .targetCarouselContainer {
+        width: 100vw;
+        .targetCarouselItem{
+          min-width: 100%;
+          .targetInCarousel{
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    margin-top: 8rem;
+    margin-bottom: 5rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .targetContainer {
+      margin-top: 10rem;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    .presentation {
+      padding: 1rem;
+      margin-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .presentation-header {
+        width: 100vw;
+      }
+      img {
+        height: 60vh;
+      }
+    }
+  }
+
+  .targetContainer{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    
+    .targetCarousel{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      height: 70vh;
+      .targetCarouselContainer{
+        display: flex;
+        width: 100vw;
+        .targetCarouselItem{
+          min-width: 100%;
+          .targetInCarousel{
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}

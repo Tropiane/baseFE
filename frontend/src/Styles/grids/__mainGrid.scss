@@ -1,0 +1,20 @@
+@media screen and (min-width: 1024px) {
+    main{
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: auto auto;
+        grid-template-areas: 
+        "presentation presentation"
+        "target target";
+        .presentation{
+            grid-area: presentation;
+        }
+        .targetCarouselContainer{
+            grid-area: target;
+        }
+        .aboutUs{
+            grid-area: aboutUs;
+        }
+    }
+    
+}

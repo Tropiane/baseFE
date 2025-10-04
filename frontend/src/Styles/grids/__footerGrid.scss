@@ -1,0 +1,72 @@
+footer{
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: 
+    "social social social"
+    "form navBar contact"; 
+
+    .socialMedia{
+        grid-area: social;
+    }
+    .footerForm{
+        grid-area: form;
+    }
+    .footerNav{
+        grid-area: navBar;
+    }
+    .footerContact{
+        grid-area: contact;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    footer{
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: auto;
+        grid-template-areas: 
+        "social" 
+        "navBar"
+        "form"
+        "contact"; 
+
+        .socialMedia{
+            grid-area: social;
+        }
+        .footerForm{
+            grid-area: form;
+        }
+        .footerNav{
+            grid-area: navBar;
+        }
+        .footerContact{
+            grid-area: contact;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 480px){
+    footer{
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: auto;
+        grid-template-areas: 
+        "social" 
+        "form"
+        "navBar"
+        "contact"; 
+
+        .socialMedia{
+            grid-area: social;
+        }
+        .footerForm{
+            grid-area: form;
+        }
+        .footerNav{
+            grid-area: navBar;
+        }
+        .footerContact{
+            grid-area: contact;
+        }
+    }
+}

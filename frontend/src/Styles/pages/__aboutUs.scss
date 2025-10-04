@@ -1,0 +1,9 @@
+@use '../__colors.scss' as *;
+
+.aboutUs{
+    text-align: start;
+    padding: 10rem;
+    h1{
+        color: $primary-color;
+    }
+}
