@@ -1,31 +1,12 @@
 //fuentes
 @use './__fuentes.scss';
+//colors
+@use './_colors.scss';
+//mixins
+@use './__mixins.scss';
 //general
 @use './styles.scss';
-
+//root
+@use './_root.scss';
 //responsive
-@use './display/__appResponsive.scss';
-@use './display/__headerResponsive.scss';
-@use './display/__mainResponsive.scss';
-@use './display/__footerResponsive.scss';
-@use './display/__fontResponsive.scss';
-@use './display/__pagesResponsive.scss';
-//grids
-@use './grids/__appGrid.scss';
-@use './grids/__headerGrid.scss';
-@use './grids/__mainGrid.scss';
-@use './grids/__footerGrid.scss';
-@use './grids/__targetGrid.scss';
-
-//animations
-@use './animations/__scroll.scss';
-
-//components
-@use './components/header/__header.scss';
-@use './components/main/_main.scss';
-@use './components/footer/_footer';
-@use './components/main/_targets.scss';
-@use './components/main/_target.scss';
-
-//pages
-@use './pages/__aboutUs';
+@use './desktop/_desktop.scss';
