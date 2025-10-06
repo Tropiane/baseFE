@@ -76,53 +76,305 @@ body {
   box-sizing: border-box;
 }
 body #root {
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
+  animation: aparecer 1s ease-in-out;
 }
 
-header {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-  height: 100dvh;
-  width: 100dvw;
-  max-width: 100dvw;
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-header .headerPresentation {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 50%;
-  background-image: linear-gradient(to right, #fefefe, #111827);
-}
-header .headerPresentation img {
-  width: 100%;
-  max-width: 400px;
-}
-header nav {
-  width: 50%;
-  height: 100vh;
-  background-color: #111827;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-header nav a {
-  color: #fefefe;
-  text-decoration: none;
-  font-size: 2rem !important;
-}
-header nav a:hover {
-  transition: 0.1s ease-in-out;
-  color: #f43f5e;
+@media screen and (min-width: 1024px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100dvh;
+    max-width: 100dvw;
+    width: 100dvw;
+    background-color: #fefefe;
+    color: #111827;
+    font-family: "Inter", sans-serif;
+    overflow: hidden;
+  }
+  header .headerPresentation {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+  }
+  header .headerPresentation img {
+    width: 100%;
+    max-width: 350px;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+  header .headerPresentation nav {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  header .headerPresentation nav a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #111827;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  header .headerPresentation nav a:hover {
+    color: #1e3a8a;
+  }
+  header .headerPresentation nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #1e3a8a;
+    transition: width 0.3s ease;
+  }
+  header .headerPresentation nav a:hover::after {
+    width: 100%;
+  }
+  header h2.titleFont {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
+  }
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content;
+    width: 100dvw;
+    max-width: 100dvw;
+    background-color: #fefefe;
+    color: #111827;
+    font-family: "Inter", sans-serif;
+  }
+  .home .presentation {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100dvh;
+  }
+  .home .presentation .presentation-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin-left: 2rem;
+  }
+  .home .presentation .presentation-header h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-align: left;
+    letter-spacing: -0.5px;
+  }
+  .home .presentation .presentation-header p {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #111827;
+    margin-bottom: 2rem;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .home .presentation .presentation-header button {
+    font-size: 1.4rem;
+    font-weight: 500;
+    background-color: transparent;
+    color: #1e3a8a;
+    border-radius: 0.5rem;
+    border: 1px solid #1e3a8a;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .home .presentation .presentation-header button:hover {
+    background-color: #1e3a8a;
+    color: #fefefe;
+  }
+  .targetCarouselControls {
+    display: none;
+  }
+  .targetContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+    width: 100dvw;
+    max-width: 100dvw;
+  }
+  .targetContainer .targetCarouselContainer {
+    width: 100dvw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+  }
+  .targetContainer .targetCarouselContainer .targetCarouselItem {
+    width: 50dvw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    margin-bottom: 2rem;
+  }
+  .targetContainer .targetCarouselContainer .targetCarouselItem .targetInCarousel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    margin-bottom: 2rem;
+    border: 1px solid #14b8a6;
+    border-top: 2rem solid #14b8a6;
+    border-radius: 1rem;
+    transition: 0.2s;
+  }
+  .targetContainer .targetCarouselContainer .targetCarouselItem .targetInCarousel:hover {
+    box-shadow: -1px 0px 20px 1px #1e3a8a;
+    transition: 0.2s ease;
+  }
+  .targetContainer .targetCarouselContainer .targetCarouselItem .targetInCarousel h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  .targetContainer .targetCarouselContainer .targetCarouselItem .targetInCarousel p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #111827;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .targetContainer .targetCarouselContainer .targetCarouselItem .targetInCarousel h4 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  .targetContainer .targetCarouselContainer .targetCarouselItem .targetInCarousel ul li {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #111827;
+    text-align: left;
+    list-style: circle;
+  }
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content;
+    margin-top: 15rem;
+    width: 100dvw;
+    max-width: 100dvw;
+    border-radius: 5rem 5rem 0 0;
+    background-color: #1e3a8a;
+    color: #fefefe;
+    text-align: center;
+    font-family: "Lato", sans-serif;
+  }
+  footer h4 {
+    font-weight: 700;
+    color: #fefefe;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  footer h4 span {
+    color: #14b8a6;
+    font-style: italic;
+  }
+  footer .socialMedia svg {
+    width: 3rem;
+    height: 3rem;
+    color: white;
+  }
+  footer form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content;
+    max-width: 50dvw;
+    background-color: #1e3a8a;
+    border: none;
+    color: #fefefe;
+    margin-bottom: 2rem;
+    box-shadow: -1px 0px 10px 1px #fefefe;
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: 0.2s ease;
+  }
+  footer form:hover {
+    box-shadow: -1px 0px 20px 1px #fefefe;
+    transition: 0.2s ease;
+  }
+  footer form label {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #fefefe;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  footer form input {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #111827;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+    border-radius: 1rem;
+    border: none;
+  }
+  footer form button {
+    font-size: 1.4rem;
+    font-weight: 500;
+    background-color: transparent;
+    color: #fefefe;
+    border-radius: 0.5rem;
+    border: 1px solid #fefefe;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  footer form button:hover {
+    background-color: #fefefe;
+    color: #1e3a8a;
+    transition: 0.2s ease;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

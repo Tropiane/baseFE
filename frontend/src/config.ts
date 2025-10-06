@@ -14,12 +14,12 @@ export const config = {
         }
     ],
     presentationData: {
-        title: "Mi propósito",
-        description: "Entiendo que para muchos es difícil costear una web y saber qué se necesita. Mi objetivo es que cualquier persona pueda acceder a una web sencilla, clara y accesible para crecer y mostrar lo que más le importa.",
+        title: "Nuestro objetivo",
+        description: "Entendemos que para muchos es difícil costear una web y saber qué se necesita. Nuestro objetivo principal es que cualquier persona pueda acceder a una web clara, profesional, que genere una experiencia positiva para crecer y mostrar lo que más le importa.",
         image: "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         imageAlt: "Presentación del proyecto personal",
         link: "/quien-soy",
-        linkText: "Conocé más sobre mí"
+        linkText: "Conocé nuestros servicios"
     },
     aboutMeData: {
         title: "Quiero que mi web sea:",

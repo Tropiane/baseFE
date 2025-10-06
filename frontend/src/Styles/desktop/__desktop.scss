@@ -1,43 +1,320 @@
 @use '../_colors.scss' as *;
-header{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
-    height: 100dvh;
-    width: 100dvw;
-    max-width: 100dvw;
-    .headerPresentation{
+
+@media screen and (min-width: 1024px) {
+    header {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
+        height: 100dvh;
+        max-width: 100dvw;
+        width: 100dvw;
+        background-color: $white-color;
+        color: $black-color;
+        font-family: "Inter", sans-serif;
+        overflow: hidden;
 
-        height: 100vh;
-        width: 50%;
-        background-image: linear-gradient(to right, $white-color, $black-color);
-        img{
+        // Navbar y presentación
+        .headerPresentation {
             width: 100%;
-            max-width: 400px;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+
+            // Imagen decorativa
+            img {
+                width: 100%;
+                max-width: 350px;
+                filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+                border-radius: 1rem;
+                object-fit: cover;
+            }
+
+            // Estilos aplicados al NavBar
+            nav {
+                display: flex;
+                gap: 2.5rem;
+                align-items: center;
+
+                a {
+                    text-decoration: none;
+                    font-size: 1.3rem;
+                    font-weight: 500;
+                    color: $black-color;
+                    position: relative;
+                    transition: color 0.2s ease;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
+
+                    // Línea animada bajo el link
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        bottom: -6px;
+                        left: 0;
+                        width: 0%;
+                        height: 2px;
+                        background-color: $primary-color;
+                        transition: width 0.3s ease;
+                    }
+
+                    &:hover::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        // Título principal
+
+        h2.titleFont {
+            font-size: 4rem;
+            font-weight: 700;
+            color: $primary-color;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
         }
     }
 
-    nav{
-        width: 50%;
-        height: 100vh;
-        background-color: $black-color;
+    .home{
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        gap: 2rem;
-        a{
+        height: max-content;
+        width: 100dvw;
+        max-width: 100dvw;
+        background-color: $white-color;
+        color: $black-color;
+        font-family: "Inter", sans-serif;
+
+        .presentation{
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100dvh;
+
+            .presentation-header{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: start;
+                margin-left: 2rem;
+
+                h2{
+                    font-size: 4rem;
+                    font-weight: 700;
+                    color: $primary-color;
+                    margin-bottom: 2rem;
+                    text-align: left;
+                    letter-spacing: -0.5px;
+                }
+
+                p{
+                    font-size: 2rem;
+                    font-weight: 400;
+                    color: $black-color;
+                    margin-bottom: 2rem;
+                    text-align: left;
+                    line-height: 1.5;
+                }
+
+                button{
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    background-color: transparent;
+                    color: $primary-color;
+                    border-radius: 0.5rem;
+                    border: 1px solid $primary-color;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease, color 0.3s ease;
+
+                    &:hover{
+                        background-color: $primary-color;
+                        color: $white-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .targetCarouselControls{
+        display: none;
+    }
+    .targetContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: max-content;
+        width: 100dvw;
+        max-width: 100dvw;
+
+        .targetCarouselContainer{
+            width: 100dvw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: max-content;
+
+            .targetCarouselItem{
+                width: 50dvw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: max-content;
+                margin-bottom: 2rem;
+
+                .targetInCarousel{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: max-content;
+                    margin-bottom: 2rem;
+                    border: 1px solid $secondary-color;
+                    border-top: 2rem solid $secondary-color;
+                    border-radius: 1rem;
+                    transition: .2s;
+
+                    &:hover{
+                        box-shadow: -1px 0px 20px 1px $primary-color;
+                        transition: .2s ease;
+                    }
+                    h3{
+                        font-size: 2.5rem;
+                        font-weight: 700;
+                        color: $primary-color;
+                        margin-bottom: 2rem;
+                        text-align: center;
+                        letter-spacing: -0.5px;
+                    }
+
+                    p{
+                        font-size: 1.5rem;
+                        font-weight: 400;
+                        color: $black-color;
+                        margin-bottom: 2rem;
+                        text-align: center;
+                        line-height: 1.5;
+                    }
+
+                    h4{
+                        font-size: 2rem;
+                        font-weight: 700;
+                        color: $primary-color;
+                        margin-bottom: 2rem;
+                        text-align: center;
+                        letter-spacing: -0.5px;
+                    }
+                    ul{
+                        li{
+                            font-size: 1.3rem;
+                            line-height: 1.5;
+                            font-weight: 400;
+                            color: $black-color;
+                            text-align: left;
+                            list-style: circle;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: max-content;
+        margin-top: 15rem;
+        width: 100dvw;
+        max-width: 100dvw;
+        border-radius: 5rem 5rem 0 0;
+        background-color: $primary-color;
+        color: $white-color;
+        text-align: center;
+        font-family: 'Lato', sans-serif;
+
+        h4{
+            font-weight: 700;
             color: $white-color;
-            text-decoration: none;
-            font-size: 2rem !important;
+            margin-bottom: 2rem;
+            text-align: center;
+            span{
+                color: $secondary-color;
+                font-style: italic;
+            }
+        }
+        .socialMedia{
+            svg{
+                width: 3rem;
+                height: 3rem;
+                color: white;
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: max-content;
+            max-width: 50dvw;
+            background-color: $primary-color;
+            border: none;
+            color: $white-color;
+            margin-bottom: 2rem;
+            box-shadow: -1px 0px 10px 1px $white-color;
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: .2s ease;
             &:hover{
-                transition: .1s ease-in-out;
-                color: $terciary-color;
+                box-shadow: -1px 0px 20px 1px $white-color;
+                transition: .2s ease;
+            }
+            label{
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: $white-color;
+                margin-bottom: 2rem;
+                text-align: center;
+                letter-spacing: -0.5px;
+            }
+
+            input{
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: $black-color;
+                margin-bottom: 2rem;
+                text-align: center;
+                letter-spacing: -0.5px;
+                border-radius: 1rem;
+                border: none
+            }
+
+            button{
+                font-size: 1.4rem;
+                font-weight: 500;
+                background-color: transparent;
+                color: $white-color;
+                border-radius: 0.5rem;
+                border: 1px solid $white-color;
+                cursor: pointer;
+                transition: background-color 0.3s ease, color 0.3s ease;
+
+                &:hover {
+                    background-color: $white-color;
+                    color: $primary-color;
+                    transition: .2s ease;
+                }
             }
         }
     }

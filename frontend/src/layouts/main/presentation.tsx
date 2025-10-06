@@ -7,8 +7,7 @@ function Presentation() {
             <p className="textFont">{config.presentationData.description}</p>
             <Button link={config.presentationData.link} text={config.presentationData.linkText} className="button buttonFont" />
         </div>
-        <img src={config.presentationData.image} alt={config.presentationData.imageAlt} />
-        {/* <img src="https://drive.google.com/thumbnail?id={Enter Your ID}&sz=w1000" alt=""/> */}
+        
 
     </div>
 }
