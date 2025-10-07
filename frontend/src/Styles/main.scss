@@ -9,4 +9,5 @@
 //root
 @use './_root.scss';
 //responsive
+@use './mobile/_mobile.scss';
 @use './desktop/_desktop.scss';

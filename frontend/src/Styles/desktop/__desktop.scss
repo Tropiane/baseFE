@@ -95,15 +95,10 @@
 
         .presentation{
             width: 50%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
             height: 100dvh;
-
-            .presentation-header{
+            margin-top: 10rem;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
                 align-items: start;
                 margin-left: 2rem;
 
@@ -141,7 +136,6 @@
                     }
                 }
             }
-        }
     }
 
     .targetCarouselControls{

@@ -81,7 +81,6 @@ body #root {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-x: hidden;
   animation: aparecer 1s ease-in-out;
 }
 
@@ -90,6 +89,133 @@ body #root {
     opacity: 0;
   }
   100% {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 480px) {
+  header {
+    width: 100dvw;
+    height: 100dvh;
+  }
+  header img {
+    width: 100%;
+    max-width: 350px;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+  header h2 {
+    margin-top: 40vh;
+    font-size: 3.5rem !important;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
+  }
+  header .navPhone svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+    z-index: 1000;
+    width: 2rem;
+    height: 2rem;
+    color: #1e3a8a;
+  }
+  header .navPhone details summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1e3a8a;
+  }
+  header .navPhone details .navPhoneLinks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #fefefe;
+    border-radius: 1rem;
+    box-shadow: -1px 0px 10px 1px #1e3a8a;
+  }
+  header .navPhone details .navPhoneLinks a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #111827;
+    transition: 0.2s ease;
+  }
+  header .navPhone details .navPhoneLinks a:active {
+    color: #1e3a8a;
+    transition: 0.2s ease;
+  }
+  .home {
+    width: 100dvw;
+    height: max-content;
+  }
+  .home .presentation {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  .home .presentation h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  .home .presentation p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #111827;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .home .presentation button {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fefefe;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #1e3a8a;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  .home .presentation button:hover {
+    background-color: #14b8a6;
+    transition: 0.2s ease;
+  }
+  .home #planes {
+    width: 100dvw;
+    height: max-content;
+  }
+  .home #planes h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  footer {
+    width: 100dvw;
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
   }
 }
@@ -174,19 +300,14 @@ body #root {
   }
   .home .presentation {
     width: 50%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     height: 100dvh;
-  }
-  .home .presentation .presentation-header {
+    margin-top: 10rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: start;
     margin-left: 2rem;
   }
-  .home .presentation .presentation-header h2 {
+  .home .presentation h2 {
     font-size: 4rem;
     font-weight: 700;
     color: #1e3a8a;
@@ -194,7 +315,7 @@ body #root {
     text-align: left;
     letter-spacing: -0.5px;
   }
-  .home .presentation .presentation-header p {
+  .home .presentation p {
     font-size: 2rem;
     font-weight: 400;
     color: #111827;
@@ -202,7 +323,7 @@ body #root {
     text-align: left;
     line-height: 1.5;
   }
-  .home .presentation .presentation-header button {
+  .home .presentation button {
     font-size: 1.4rem;
     font-weight: 500;
     background-color: transparent;
@@ -212,7 +333,7 @@ body #root {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-  .home .presentation .presentation-header button:hover {
+  .home .presentation button:hover {
     background-color: #1e3a8a;
     color: #fefefe;
   }
