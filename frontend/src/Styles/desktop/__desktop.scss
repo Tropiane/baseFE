@@ -7,8 +7,8 @@
         justify-content: space-between;
         align-items: center;
         height: 100dvh;
-        max-width: 100dvw;
-        width: 100dvw;
+        max-width: 100%;
+        width: 100%;
         background-color: $white-color;
         color: $black-color;
         font-family: "Inter", sans-serif;
@@ -87,8 +87,8 @@
         justify-content: space-between;
         align-items: center;
         height: max-content;
-        width: 100dvw;
-        max-width: 100dvw;
+        width: 100%;
+        max-width: 100%;
         background-color: $white-color;
         color: $black-color;
         font-family: "Inter", sans-serif;
@@ -120,19 +120,22 @@
                     line-height: 1.5;
                 }
 
-                button{
+                a{
                     font-size: 1.4rem;
+                    text-decoration: none;
                     font-weight: 500;
-                    background-color: transparent;
-                    color: $primary-color;
+                    background-color: $primary-color;
+                    color: $white-color;
                     border-radius: 0.5rem;
-                    border: 1px solid $primary-color;
+                    padding: 2rem 4rem;
+                    border: none;
                     cursor: pointer;
                     transition: background-color 0.3s ease, color 0.3s ease;
 
                     &:hover{
-                        background-color: $primary-color;
+                        background-color: $secondary-color;
                         color: $white-color;
+                        border: none;
                     }
                 }
             }
@@ -146,11 +149,11 @@
         flex-direction: column;
         align-items: center;
         height: max-content;
-        width: 100dvw;
-        max-width: 100dvw;
+        width: 100%;
+        max-width: 100%;
 
         .targetCarouselContainer{
-            width: 100dvw;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -230,8 +233,8 @@
         align-items: center;
         height: max-content;
         margin-top: 15rem;
-        width: 100dvw;
-        max-width: 100dvw;
+        width: 100%;
+        max-width: 100%;
         border-radius: 5rem 5rem 0 0;
         background-color: $primary-color;
         color: $white-color;
@@ -314,7 +317,7 @@
     }
 
     .login{
-        width: 100dvw;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;

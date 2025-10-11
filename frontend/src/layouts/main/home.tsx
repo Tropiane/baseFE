@@ -7,6 +7,9 @@ function Home() {
         <div className="home">
         <ScrollView>
             <Presentation></Presentation>
+        </ScrollView>
+        
+        <ScrollView>
             <TargetContainer></TargetContainer>
         </ScrollView>
         </div>

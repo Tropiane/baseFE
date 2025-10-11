@@ -16,7 +16,6 @@ const login = async (data: User)=>{
     if(!res.ok){
         throw new Error("Error al iniciar sesion")
     }
-    console.log(res);
     
     return res.json()
 }

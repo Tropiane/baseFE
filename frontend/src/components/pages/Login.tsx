@@ -28,8 +28,9 @@ export const Login = ()=>{
             showLoginAlert("La contrasena no puede estar vacia");
             return
         };
-        await login(formData); 
+
         window.location.href = "/tickets-manager";
+        await login(formData);
     }
     return(
         <div className="login">
