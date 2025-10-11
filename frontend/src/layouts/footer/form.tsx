@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createTicket } from "../../utils/backendTicketConnections";
+import { showTicketAlert } from "../../utils/alerts";
 
 function Form() {
     const [formData, setFormData] = useState({
@@ -17,9 +18,10 @@ function Form() {
     }
 
     const handleSubmit = async (e: React.FormEvent)=>{
-        e.preventDefault()
-        console.log({formData});
-        await createTicket(formData)
+        e.preventDefault();
+        if(formData.name.length === 0 || formData.email.length === 0 || formData.phone.length === 0 || formData.description.length === 0) return showTicketAlert("Todos los campos son obligatorios", "error");
+        await createTicket(formData);
+        return showTicketAlert("Su consulta ha sido enviada", "success");
         
     }
     return (

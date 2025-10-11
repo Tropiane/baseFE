@@ -312,4 +312,71 @@
             }
         }
     }
+
+    .login{
+        width: 100dvw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1{
+            font-size: 3rem;
+            font-weight: 700;
+            color: $primary-color;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+        form{
+            width: 80dvw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            background-color: $white-color;
+            border-radius: 1rem;
+            box-shadow: -1px 0px 10px 1px $primary-color;
+
+            label{
+                font-size: 2rem;
+                font-weight: 400;
+                color: $black-color;
+                text-align: center;
+                letter-spacing: -0.5px;
+            }
+
+            input{
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: $black-color;
+                margin-bottom: 2rem;
+                text-align: center;
+                letter-spacing: -0.5px;
+                border-radius: 1rem;
+                border: 1px solid $primary-color;
+            }
+
+            button{
+                font-size: 1.4rem;
+                font-weight: 400;
+                color: $white-color;
+                margin-bottom: 2rem;
+                text-align: center;
+                letter-spacing: -0.5px;
+                padding: 1rem 2rem;
+                border: none;
+                border-radius: 1rem;
+                background-color: $primary-color;
+                cursor: pointer;
+                transition: .2s ease;
+                &:hover{
+                    background-color: $secondary-color;
+                    transition: .2s ease;
+                }
+            }
+        }
+    }
 }
