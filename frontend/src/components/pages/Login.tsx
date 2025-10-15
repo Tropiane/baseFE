@@ -29,7 +29,6 @@ export const Login = ()=>{
             return
         };
 
-        window.location.href = "/tickets-manager";
         await login(formData);
     }
     return(

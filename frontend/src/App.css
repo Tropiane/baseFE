@@ -706,6 +706,134 @@ body #root {
     background-color: #14b8a6;
     transition: 0.2s ease;
   }
+  .ticketsContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  .ticketsContainer .ticketTarget {
+    width: 30dvw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #fefefe;
+    border-radius: 1rem;
+    box-shadow: -1px 0px 10px 1px #1e3a8a;
+  }
+  .ticketsContainer .ticketTarget .statusList {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .ticketsContainer .ticketTarget ul h4 {
+    font-weight: 400;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  .ticketsContainer .ticketTarget ul li {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #111827;
+    text-align: left;
+    letter-spacing: -0.5px;
+    list-style: circle;
+    margin-bottom: 1rem;
+  }
+  .ticketsContainer .ticketTarget ul .ticketStatus {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: #14b8a6;
+  }
+  .ticketsContainer .ticketTarget ul .ticketStatus.pendiente {
+    background-color: #f43f5e;
+  }
+  .ticketsContainer .ticketTarget ul .ticketStatus.finalizado {
+    background-color: #1e3a8a;
+    color: #fefefe;
+  }
+  .ticketsContainer .ticketTarget textArea {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #111827;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+    border-radius: 1rem;
+    border: 1px solid #1e3a8a;
+  }
+  .ticketsContainer .ticketTarget .deleteTicket {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #fefefe;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+    padding: 1rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #f43f5e;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  .ticketsContainer .ticketTarget .deleteTicket:hover {
+    background-color: #14b8a6;
+    transition: 0.2s ease;
+  }
+  .ticketsContainer .ticketTarget .commentTicket {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #fefefe;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+    padding: 1rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #1e3a8a;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  .ticketsContainer .ticketTarget .commentTicket:hover {
+    background-color: #14b8a6;
+    transition: 0.2s ease;
+  }
+  .ticketsContainer .ticketTarget .changeStatus label {
+    font-size: 1.2 rem;
+    font-weight: 400;
+    color: #111827;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  .ticketsContainer .ticketTarget .changeStatus select {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #fefefe;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+    padding: 1rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #1e3a8a;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

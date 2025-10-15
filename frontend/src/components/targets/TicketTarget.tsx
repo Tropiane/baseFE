@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Ticket } from "../pages/TicketsManager";
-import { addTicketComment, deleteTicket } from "../../utils/backendTicketConnections";
+import { addTicketComment, changeTicketStatus, deleteTicket } from "../../utils/backendTicketConnections";
 
 export function TicketTarget(data: Ticket){
     const [comment, setComment] = useState('');
@@ -23,23 +23,42 @@ export function TicketTarget(data: Ticket){
         e.preventDefault();
         await deleteTicket(data.formId);
     };
+
+    const changeStatus = async(e: React.ChangeEvent<HTMLSelectElement>)=>{
+        const status = e.target.value;
+        if(status.length == 0 || status != "Pendiente" && status != "En Curso" && status != "Finalizado") return;
+        
+        try {
+            console.log('datos del front', {formId: data.formId, status});
+            
+            await changeTicketStatus(data.formId, status);
+        } catch (error) {
+            console.log('Error cambiando el estado', error);
+            
+        }
+        
+    }
     return(
         <div key={data.formId} className="ticketTarget">
             <ul className="listFont">
                 <li>{data.name}</li>
                 <li>{data.phone}</li>
                 <li>{data.email}</li>
-                <li>Estado: <input list="statusList" placeholder={data.status}/></li>
+                <li className={`ticketStatus ${data.status?.trim().toLowerCase()}`}>Estado: {data.status}</li>
             </ul>
-            <datalist id="statusList">
-                <option value="Pendiente"></option>
-                <option value="En curso"></option>
-                <option value="Finalizado"></option>
-            </datalist>
+            
+            <div className="changeStatus">
+                <label htmlFor="status">Cambiar Estado:</label>
+                <select name="status" id="status" onChange={changeStatus}>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="En Curso">En Curso</option>
+                    <option value="Finalizado">Finalizado</option>
+                </select>
+            </div>
             <p className="textFont">{data.description}</p>
 
             <ul className="comments">
-                Comentarios
+                <h4 className="fourthTitleFont">Comentarios</h4>
                 {data.comments?.map((comment)=>(
                     <li key={comment}>{comment}</li>
                 ))}

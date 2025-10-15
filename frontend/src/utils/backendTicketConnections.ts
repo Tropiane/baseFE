@@ -62,4 +62,19 @@ async function deleteTicket(id:number){
     return res.json();
 }
 
-export {getTickets, createTicket, addTicketComment, deleteTicket}
+async function changeTicketStatus(formId:number, status:string){
+    const res = await fetch(`${API_URL}/change-status`, {
+        method: "PATCH",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({formId, status})
+    });
+    console.log(res.body);
+    
+    if(!res.ok){
+        throw new Error("Error al modificar status del ticket");
+    }
+
+    return res.json()
+}
+
+export {getTickets, createTicket, addTicketComment, deleteTicket, changeTicketStatus}
