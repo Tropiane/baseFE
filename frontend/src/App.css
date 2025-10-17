@@ -328,6 +328,8 @@ body #root {
     letter-spacing: -0.5px;
   }
   footer form input {
+    width: 100%;
+    max-width: 80dvw;
     font-size: 1.5rem;
     font-weight: 400;
     color: #111827;
