@@ -3,7 +3,7 @@ interface User{
     password: string
 }
 
-const API_URL = import.meta.env.VITE_USER_API;
+const API_URL = import.meta.env.USER_API || import.meta.env.VITE_USER_API;
 
 const login = async (data: User)=>{
     const res = await fetch(API_URL, {

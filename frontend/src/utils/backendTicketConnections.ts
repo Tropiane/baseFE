@@ -6,7 +6,7 @@ interface Ticket{
     description: string
 }
 
-const API_URL = import.meta.env.TICKET_API;
+const API_URL = import.meta.env.TICKET_API || import.meta.env.VITE_TICKET_API;
 
 async function getTickets(): Promise<Ticket[]>{
     const res = await fetch(API_URL, {
