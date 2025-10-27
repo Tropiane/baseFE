@@ -91,8 +91,14 @@ export const config = {
         },
         {
             id: 2,
-            text: "sos admin? ingresa",
+            text: "Ingreso",
             link: '/login'
+        },
+        {
+            id: 3,
+            text: "Tickets Manager",
+            link: "/tickets-manager",
+            className: "green"
         }
     ],
     globalCTA: {

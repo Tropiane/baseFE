@@ -29,7 +29,10 @@ export const Login = ()=>{
             return
         };
 
-        await login(formData);
+        const res = await login(formData);
+
+        if(res.status === "error") return showLoginAlert("error");
+        if(res.ok) return (window.location.href = "/tickets-manager");
     }
     return(
         <div className="login">
