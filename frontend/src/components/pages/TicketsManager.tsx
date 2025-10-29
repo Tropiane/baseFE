@@ -56,9 +56,15 @@ export const TicketsManager = () => {
 
   return (
     <>
-      <h1 className="titleFont" style={{ textAlign: "center" }}>
+      <h1 className="thirdTitleFont" style={{ textAlign: "center" }}>
         Gestion de tickets
       </h1>
+      <div className="ticketsFilter">
+        <h2 className="fourthTitleFont">Filtrar</h2>
+        <button className="filterButton">Pendientes</button>
+        <button className="filterButton">En Curso</button>
+        <button className="filterButton">Finalizados</button>
+      </div>
       <div className="ticketsContainer">
 
         {/* //Pendientes */}
