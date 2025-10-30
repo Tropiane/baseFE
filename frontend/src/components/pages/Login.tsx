@@ -30,9 +30,11 @@ export const Login = ()=>{
         };
 
         const res = await login(formData);
-
-        if(res.status === "error") return showLoginAlert("error");
-        if(res.ok) return (window.location.href = "/tickets-manager");
+        console.log(res);
+        
+        if(res === 500) return showLoginAlert("error al iniciar sesion", "error");
+        
+        if(res.message === "Login exitoso") return (showLoginAlert("Sesion iniciada", "success"), window.location.href = "/tickets-manager");
     }
     return(
         <div className="login">

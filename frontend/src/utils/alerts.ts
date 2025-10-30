@@ -1,6 +1,6 @@
 import Swal, { type SweetAlertIcon } from "sweetalert2"
 
-export const showLoginAlert = (message: string) => {
+export const showLoginAlert = (message: string, icon: SweetAlertIcon = "error") => {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -14,7 +14,7 @@ export const showLoginAlert = (message: string) => {
           })
           
           Toast.fire({
-            icon: 'error',
+            icon: icon,
             title: message
           })
 }
