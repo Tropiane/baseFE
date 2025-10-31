@@ -64,14 +64,14 @@ export function TicketTarget(data: Ticket){
             </ul>
             
             <div className="changeStatus">
-                <label htmlFor="status">Cambiar Estado:</label>
+                <label htmlFor="status">Cambiar Estado </label>
                 <select name="status" id="status" onChange={changeStatus}>
                     <option value="Pendiente">Pendiente</option>
                     <option value="En Curso">En Curso</option>
                     <option value="Finalizado">Finalizado</option>
                 </select>
             </div>
-            <p className="textFont">{data.description}</p>
+            <p className="textFont ticketDescription">{data.description}</p>
 
             <ul className="comments">
                 <h4 className="fourthTitleFont">Comentarios</h4>

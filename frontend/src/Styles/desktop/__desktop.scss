@@ -383,6 +383,36 @@
         }
     }
 
+    .ticketsFilter{
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        padding: 2rem;
+        
+        button{
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: $white-color;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 1rem;
+            background-color: $primary-color;
+            cursor: pointer;
+            transition: .2s ease;
+            &:hover{
+                background-color: $secondary-color;
+                transition: .2s ease;
+            }
+        }
+    }
+
     .ticketsContainer{
         width: 90%;
         display: flex;
@@ -394,7 +424,8 @@
         padding: 2rem;
 
         .pendingTickets{
-            background-color: red;
+            background-color: rgba(255, 0, 0, 0.507);
+            border-radius: 5rem;
             width: 100%;
             display: flex;
             flex-direction: row;
@@ -406,7 +437,8 @@
         }
 
         .inProgressTickets{
-            background-color: yellow;
+            background-color: #14b8a5bd;
+            border-radius: 5rem;
             width: 100%;
             display: flex;
             flex-direction: row;
@@ -418,7 +450,8 @@
         }
 
         .closedTickets{
-            background-color: green;
+            background-color: rgba(30, 59, 138, 0.801);
+            border-radius: 5rem;
             width: 100%;
             display: flex;
             flex-direction: row;
@@ -430,12 +463,12 @@
         }
 
         .ticketTarget{
-            width: 30dvw;
+            width: 20dvw;
+            height: max-content;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
             padding: 2rem;
             background-color: $white-color;
             border-radius: 1rem;
@@ -454,11 +487,10 @@
                     color: $primary-color;
                     margin-bottom: 2rem;
                     text-align: center;
-                    letter-spacing: -0.5px;
                 }
                 
                 li{
-                    font-size: 1.5rem;
+                    font-size: 1.1rem;
                     font-weight: 400;
                     color: $black-color;
                     text-align: left;
@@ -473,8 +505,8 @@
                     border-radius: .5rem;
                     padding: .5rem;
                     text-align: center;
-                    font-size: 1rem;
-                    font-weight: 400;
+                    font-size: 1.2rem;
+                    font-weight: 600;
                     background-color: $secondary-color;
                 }
             }
@@ -535,12 +567,24 @@
                 }
             }
 
+            .ticketDescription{
+                border-top: 1px solid $primary-color;
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+            }
+
             .changeStatus{
+                border: 2px solid $primary-color;
+                border-radius: 1rem;
+                &:hover{
+                    box-shadow: -1px 0px 5px 1px $primary-color;
+                    transition: .2s ease;
+                }
                 label{
-                    font-size: 1.2 rem;
+                    font-size: 1.2rem;
                     font-weight: 400;
                     color: $black-color;
-                    margin-bottom: 2rem;
                     text-align: center;
                     letter-spacing: -0.5px;
                 }
@@ -548,7 +592,6 @@
                     font-size: 1.2rem;
                     font-weight: 400;
                     color: $white-color;
-                    margin-bottom: 2rem;
                     text-align: center;
                     letter-spacing: -0.5px;
                     padding: 1rem 1rem;
