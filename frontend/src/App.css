@@ -829,6 +829,10 @@ body #root {
     background-color: #14b8a6;
     transition: 0.2s ease;
   }
+  .ticketsContainer .ticketTarget .deleteTicket:active {
+    transform: scale(0.9);
+    transition: 0.2s ease;
+  }
   .ticketsContainer .ticketTarget .commentTicket {
     font-size: 1.2rem;
     font-weight: 400;
@@ -845,6 +849,10 @@ body #root {
   }
   .ticketsContainer .ticketTarget .commentTicket:hover {
     background-color: #14b8a6;
+    transition: 0.2s ease;
+  }
+  .ticketsContainer .ticketTarget .commentTicket:active {
+    transform: scale(0.9);
     transition: 0.2s ease;
   }
   .ticketsContainer .ticketTarget .changeStatus label {

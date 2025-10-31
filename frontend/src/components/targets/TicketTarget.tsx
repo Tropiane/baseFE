@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import type { Ticket } from "../pages/TicketsManager";
 import { addTicketComment, changeTicketStatus, deleteTicket } from "../../utils/backendTicketConnections";
+import { showTicketAlert } from "../../utils/alerts";
 
 export function TicketTarget(data: Ticket){
     const [comment, setComment] = useState('');
@@ -24,6 +25,7 @@ export function TicketTarget(data: Ticket){
 
         if(addComment.length == 0) return;
         
+        showTicketAlert("Comentario Agregado", "success");
         await addTicketComment(data.formId, addComment);
         setComment('');
         setComments([...comments, addComment]);
@@ -31,6 +33,8 @@ export function TicketTarget(data: Ticket){
 
     const handleDelete = async(e: React.MouseEvent<HTMLButtonElement>)=>{
         e.preventDefault();
+
+        showTicketAlert("Ticket Eliminado", "success");
         await deleteTicket(data.formId);
     };
 
@@ -41,6 +45,7 @@ export function TicketTarget(data: Ticket){
         try {
             setStatus(status);
 
+            showTicketAlert(`Se ha cambiado el estado del ticket a ${status}`, "success");
             await changeTicketStatus(data.formId, status);
         } catch (error) {
             console.log('Error cambiando el estado', error);
