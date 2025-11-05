@@ -1,5 +1,5 @@
 import Button from "../inputs/button";
-import TargetPlan from "./targetPlan";
+import TargetPlan from "./TargetPlan";
 
 interface Props {
     title: string;

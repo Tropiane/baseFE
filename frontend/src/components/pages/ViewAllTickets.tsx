@@ -1,60 +1,29 @@
 import { useEffect, useState } from "react";
-import { getTickets } from "../../utils/backendTicketConnections";
+import type { Ticket } from "./TicketsManager";
+
 import { TicketTarget } from "../targets/TicketTarget";
 
-// Backend response type (may have undefined formId)
-interface BackendTicket {
-    formId?: number,
-    name: string,
-    email: string,
-    phone: string,
-    description: string,
-    status?: string,
-    comments?: string[]
-}
-
-export interface Ticket{
-    formId: number,
-    name: string,
-    email: string,
-    phone: string,
-    description: string,
-    status?: string,
-    comments?: string[]
-}
-
-export const TicketsManager = () => {
-  const [data, setData] = useState<Ticket[]>([]);
+export const ViewAllTickets = (data: Ticket[]) => {
+    const [tickets, setTickets] = useState<Ticket[]>([]);
   const [pendingTickets, setPendingTickets] = useState<Ticket[]>([]);
   const [inProgressTickets, setInProgressTickets] = useState<Ticket[]>([]);
   const [closedTickets, setClosedTickets] = useState<Ticket[]>([]);
-  useEffect(() => {
-    getTickets()
-      .then((res: BackendTicket[]) => {
-        const updatedData = res.map((ticket: BackendTicket) => ({
-          formId: ticket.formId ?? 0,
-          name: ticket.name,
-          email: ticket.email,
-          phone: ticket.phone,
-          description: ticket.description,
-          status: ticket.status,
-          comments: ticket.comments
-        }));
-        setData(updatedData);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  
 
   useEffect(() => {
-    setPendingTickets(data.filter((ticket) => ticket.status === "Pendiente"));
-    setInProgressTickets(data.filter((ticket) => ticket.status === "En Curso"));
-    setClosedTickets(data.filter((ticket) => ticket.status === "Finalizado"));
-  }, [data]);
+    setTickets(data);
+    setPendingTickets(tickets.filter((ticket) => ticket.status === "Pendiente"));
+    setInProgressTickets(tickets.filter((ticket) => ticket.status === "En Curso"));
+    setClosedTickets(tickets.filter((ticket) => ticket.status === "Finalizado"));
+    console.log(data);
+    
+  }, [tickets, data]);
 
   
-  if(data.length === 0) return <h1>Cargando</h1>;
+
   return (
     <>
+     
       <div className="ticketsContainer">
 
         {/* //Pendientes */}

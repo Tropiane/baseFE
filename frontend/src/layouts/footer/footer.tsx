@@ -1,7 +1,6 @@
-import SocialMedia from "./socialMedia.tsx"
-
 import { config } from "../../config.ts"
 import Form from "./form.tsx"
+import SocialMedia from "./socialMedia.tsx"
 
 function Footer() {
     return <footer id="footer">

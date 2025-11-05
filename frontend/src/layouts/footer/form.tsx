@@ -20,7 +20,8 @@ function Form() {
     const handleSubmit = async (e: React.FormEvent)=>{
         e.preventDefault();
         if(formData.name.length === 0 || formData.email.length === 0 || formData.phone.length === 0 || formData.description.length === 0) return showTicketAlert("Todos los campos son obligatorios", "error");
-        return (showTicketAlert("Su consulta ha sido enviada", "success"), await createTicket(formData), setFormData({name: '', email: '', phone: '', description: ''})); 
+        return (showTicketAlert("Su consulta ha sido enviada", "success"), 
+        setTimeout(() => window.location.reload(), 2000), await createTicket(formData), setFormData({name: '', email: '', phone: '', description: ''})); 
     }
     return (
     <div className="footerForm">

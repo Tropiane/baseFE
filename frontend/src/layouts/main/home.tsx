@@ -1,5 +1,5 @@
 import ScrollView from "../../components/animations/scrollView.js";
-import TargetContainer from "../../components/targets/targetContainer.js";
+import TargetContainer from "../../components/targets/TargetContainer.js";
 import Presentation from "./presentation.jsx";
 
 function Home() {

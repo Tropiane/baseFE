@@ -816,6 +816,10 @@ body #root {
     list-style: circle;
     margin-bottom: 1rem;
   }
+  .ticketsContainer .ticketTarget ul li a {
+    text-decoration: none;
+    color: rgba(17, 221, 17, 0.816);
+  }
   .ticketsContainer .ticketTarget ul .ticketStatus {
     border-radius: 0.5rem;
     padding: 0.5rem;
@@ -881,10 +885,10 @@ body #root {
     background-color: #14b8a6;
     transition: 0.2s ease;
   }
-<<<<<<< HEAD
   .ticketsContainer .ticketTarget .commentTicket:active {
     transform: scale(0.9);
-=======
+    transition: 0.2s ease;
+  }
   .ticketsContainer .ticketTarget .ticketDescription {
     border-top: 1px solid #1e3a8a;
     width: 100%;
@@ -897,7 +901,6 @@ body #root {
   }
   .ticketsContainer .ticketTarget .changeStatus:hover {
     box-shadow: -1px 0px 5px 1px #1e3a8a;
->>>>>>> 726834d470b6cc13ea187b14887d0f47d302da9c
     transition: 0.2s ease;
   }
   .ticketsContainer .ticketTarget .changeStatus label {

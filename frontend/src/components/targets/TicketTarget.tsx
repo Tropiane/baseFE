@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+
 import type { Ticket } from "../pages/TicketsManager";
 import { addTicketComment, changeTicketStatus, deleteTicket } from "../../utils/backendTicketConnections";
 import { showTicketAlert } from "../../utils/alerts";
@@ -58,7 +60,7 @@ export function TicketTarget(data: Ticket){
         <div key={data.formId} className="ticketTarget">
             <ul className="listFont">
                 <li>{data.name}</li>
-                <li>{data.phone}</li>
+                <li><a href={`https://wa.me/+598${data.phone}`} target="_blank">{data.phone} <FaWhatsapp /></a></li>
                 <li>{data.email}</li>
                 <li className={`ticketStatus ${status?.trim().toLowerCase()}`}>Estado: {status}</li>
             </ul>
