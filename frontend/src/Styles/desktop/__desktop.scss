@@ -379,6 +379,10 @@
                     background-color: $secondary-color;
                     transition: .2s ease;
                 }
+                &:active{
+                    transform: scale(.9);
+                    transition: .2s ease;
+                }
             }
         }
     }
