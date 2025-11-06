@@ -1,6 +1,7 @@
-import ScrollView from "../../components/animations/scrollView.js";
-import TargetContainer from "../../components/targets/TargetContainer.js";
-import Presentation from "./presentation.jsx";
+import ScrollView from "../../components/animations/scrollView"
+import TargetContainer from "../../components/targets/TargetContainer"
+import Presentation from "./presentation"
+
 
 function Home() {
     return (
