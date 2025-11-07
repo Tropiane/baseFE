@@ -1,5 +1,5 @@
 import ScrollView from "../../components/animations/scrollView"
-import TargetContainer from "../../components/targets/TargetContainer"
+import TargetContainer from "../../components/targets/targetContainer"
 import Presentation from "./presentation"
 
 

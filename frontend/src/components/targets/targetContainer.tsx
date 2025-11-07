@@ -1,6 +1,6 @@
 import { config } from "../../config";
-import Target from "./Target";
-import TargetCarousel from "./TargetCarousel";
+import Target from "./target";
+import TargetCarousel from "./targetCarousel";
 
 const TargetContainer = () => {
   return (

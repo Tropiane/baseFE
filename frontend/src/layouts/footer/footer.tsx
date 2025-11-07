@@ -1,6 +1,6 @@
 import { config } from "../../config.ts";
-import Form from "./Form.tsx";
-import SocialMedia from "./SocialMedia.tsx";
+import Form from "./form";
+import SocialMedia from "./socialMedia";
 
 
 function Footer() {
