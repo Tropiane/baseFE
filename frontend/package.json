@@ -13,6 +13,7 @@
   "dependencies": {
     "@cloudinary/react": "^1.14.3",
     "@cloudinary/url-gen": "^1.21.0",
+    "axios": "^1.13.2",
     "cloudinary": "^2.7.0",
     "firebase": "^11.9.1",
     "framer-motion": "^12.23.0",
