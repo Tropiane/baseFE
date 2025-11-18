@@ -1,23 +1,21 @@
+import { userConnect } from "./axios.connection";
+
 interface User{
     email: string,
     password: string
-}
-
-const API_URL = import.meta.env.VITE_USER_API || import.meta.env.USER_API;
+};
 
 const login = async (data: User)=>{
-    const res = await fetch(API_URL, {
-        method: "POST",
-        credentials: "include",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data)
-    });
+    try {
+        const res = await userConnect.post('/',{
+            email: data.email,
+            password: data.password
+        })
 
-    if(!res.ok){
-        return res.status
+        return res.data
+    } catch (error) {
+        throw new Error(`error al iniciar sesion ${error}`)
     }
-    
-    return res.json()
 }
 
 export {

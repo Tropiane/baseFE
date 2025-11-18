@@ -13,7 +13,10 @@
   "dependencies": {
     "@cloudinary/react": "^1.14.3",
     "@cloudinary/url-gen": "^1.21.0",
+<<<<<<< HEAD
     "@tailwindcss/vite": "^4.1.17",
+=======
+>>>>>>> 48c7beb00e47112b4ff97a43c70a2eaadce1c0ed
     "axios": "^1.13.2",
     "cloudinary": "^2.7.0",
     "firebase": "^11.9.1",
