@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import type { Ticket } from "../pages/TicketsManager";
+import type { Ticket } from "./TicketInterfaces";
 import { addTicketComment, changeTicketStatus, deleteTicket } from "../../utils/backendTicketConnections";
 import { showTicketAlert } from "../../utils/alerts";
 

@@ -1,94 +1,54 @@
-import { useEffect, useState } from "react";
-import { getTickets } from "../../utils/backendTicketConnections";
-import { TicketTarget } from "../targets/TicketTarget";
-
-// Backend response type (may have undefined formId)
-interface BackendTicket {
-    formId?: number,
-    name: string,
-    email: string,
-    phone: string,
-    description: string,
-    status?: string,
-    comments?: string[]
-}
-
-export interface Ticket{
-    formId: number,
-    name: string,
-    email: string,
-    phone: string,
-    description: string,
-    status?: string,
-    comments?: string[]
-}
+import { useTickets } from "../../hooks/useTickets";
+import { TicketTarget } from "../tickets/TicketTarget";
 
 export const TicketsManager = () => {
-  const [data, setData] = useState<Ticket[]>([]);
-  const [pendingTickets, setPendingTickets] = useState<Ticket[]>([]);
-  const [inProgressTickets, setInProgressTickets] = useState<Ticket[]>([]);
-  const [closedTickets, setClosedTickets] = useState<Ticket[]>([]);
-  useEffect(() => {
-    getTickets()
-      .then((res: BackendTicket[]) => {
-        const updatedData = res.map((ticket: BackendTicket) => ({
-          formId: ticket.formId ?? 0,
-          name: ticket.name,
-          email: ticket.email,
-          phone: ticket.phone,
-          description: ticket.description,
-          status: ticket.status,
-          comments: ticket.comments
-        }));
-        setData(updatedData);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const {data, closedTickets, inProgressTickets, pendingTickets} = useTickets()
 
-  useEffect(() => {
-    setPendingTickets(data.filter((ticket) => ticket.status === "Pendiente"));
-    setInProgressTickets(data.filter((ticket) => ticket.status === "En Curso"));
-    setClosedTickets(data.filter((ticket) => ticket.status === "Finalizado"));
-  }, [data]);
-
-  
   if(data.length === 0) return <h1>Cargando</h1>;
   return (
     <>
+      {/* //Pendientes */}
       <div className="ticketsContainer">
 
-        {/* //Pendientes */}
-        <div className="pendingTickets">
-          {pendingTickets.map((ticket) => (
-          <TicketTarget
-            key={ticket.formId}
-            formId={ticket.formId}
-            description={ticket.description}
-            name={ticket.name}
-            phone={ticket.phone}
-            email={ticket.email}
-            status={ticket.status}
-            comments={ticket.comments}
-          />
-        ))}
-        </div>
+        <details>
+          <summary className="flex-row text-center bg-red-300 rounded-2xl text-xl p-5">Pendientes {pendingTickets.length}</summary>
+          <div className="pendingTickets">
+            {pendingTickets.map((ticket) => (
+              <TicketTarget
+              key={ticket.formId}
+              formId={ticket.formId}
+              description={ticket.description}
+              name={ticket.name}
+              phone={ticket.phone}
+              email={ticket.email}
+              status={ticket.status}
+              comments={ticket.comments}
+              />
+            ))}
+          </div>
+        </details>
 
         {/* //En Curso */}
-        <div className="inProgressTickets">
-          {inProgressTickets.map((ticket) => (
-          <TicketTarget
-            key={ticket.formId}
-            formId={ticket.formId}
-            description={ticket.description}
-            name={ticket.name}
-            phone={ticket.phone}
-            email={ticket.email}
-            status={ticket.status}
-            comments={ticket.comments}
-          />
-        ))}
-        </div>
+        <details>
+          <summary className="flex-row text-center bg-green-400 rounded-2xl text-xl p-5">En curso {inProgressTickets.length}</summary>
+          <div className="inProgressTickets">
+            {inProgressTickets.map((ticket) => (
+            <TicketTarget
+              key={ticket.formId}
+              formId={ticket.formId}
+              description={ticket.description}
+              name={ticket.name}
+              phone={ticket.phone}
+              email={ticket.email}
+              status={ticket.status}
+              comments={ticket.comments}
+              />
+          ))}
+          </div>
+        </details>
 
+        <details>
+          <summary className="flex-row text-center bg-blue-400 rounded-2xl text-xl p-5">Finalizados {closedTickets.length}</summary>
         {/* // Finalizados */}
         <div className="closedTickets">
           {closedTickets.map((ticket) => (
@@ -104,6 +64,7 @@ export const TicketsManager = () => {
           />
         ))}
         </div>
+      </details>
       </div>
     </>
   );
