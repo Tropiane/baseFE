@@ -13,7 +13,7 @@ async function getTickets(): Promise<Ticket[]>{
         const res = await ticketConnect.get<Ticket[]>('/', {
         withCredentials: true
         })
-
+        
         return res.data
     } catch (error) {
         throw new Error(`Error al obtener los datos ${error}`)
@@ -22,7 +22,7 @@ async function getTickets(): Promise<Ticket[]>{
 
 async function createTicket(ticket: Ticket): Promise<Ticket[]>{
     try {
-        const res = await ticketConnect.post('/', {
+        const res = await ticketConnect.post<Ticket[]>('/', {
         formId: ticket.formId,
         name: ticket.name,
         email: ticket.email,
@@ -30,7 +30,7 @@ async function createTicket(ticket: Ticket): Promise<Ticket[]>{
         description: ticket.description
     })
     
-    return res.data
+    return(res.data)
 
     } catch (error) {
         throw new Error(`Error al crear el ticket ${error}`)

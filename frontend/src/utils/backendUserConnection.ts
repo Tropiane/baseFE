@@ -10,7 +10,7 @@ const login = async (data: User)=>{
         const res = await userConnect.post('/',{
             email: data.email,
             password: data.password
-        })
+        }, {withCredentials: true})
 
         return res.data
     } catch (error) {
