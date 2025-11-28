@@ -11,10 +11,10 @@ const login = async (data: User)=>{
             email: data.email,
             password: data.password
         })
-
+        
         return res.data
     } catch (error) {
-        throw new Error(`error al iniciar sesion ${error}`)
+        return 500
     }
 }
 

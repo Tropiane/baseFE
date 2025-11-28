@@ -34,7 +34,12 @@ export const Login = ()=>{
         
         if(res === 500) return showLoginAlert("error al iniciar sesion", "error");
         
-        if(res.message === "Login exitoso") return (showLoginAlert("Sesion iniciada", "success"), window.location.href = "/tickets-manager");
+        if(res.message === "Login exitoso") {
+              showLoginAlert("Inicio de sesion exitoso", "success");
+              setTimeout(()=>{
+                window.location.href = "/tickets-manager";
+              }, 2000)
+        }
     }
     return(
 <div className=" flex flex-col items-center justify-center p-4 mb-20">
