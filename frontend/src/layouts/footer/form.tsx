@@ -24,19 +24,17 @@ function Form() {
         setTimeout(() => window.location.reload(), 2000), await createTicket(formData), setFormData({name: '', email: '', phone: '', description: ''})); 
     }
     return (
-    <div className="footerForm">
-        <form>
+        <form className="flex flex-col gap-4 w-full max-w-md">
             <label htmlFor="name">Nombre</label>
-            <input type="text" name="name" onChange={handleChange}/>
+            <input className="border border-gray-400 p-2 rounded" type="text" name="name" onChange={handleChange}/>
             <label htmlFor="email">Correo</label>
-            <input type="text" name="email" onChange={handleChange}/>
+            <input className="border border-gray-400 p-2 rounded" type="text" name="email" onChange={handleChange}/>
             <label htmlFor="phone">Celular</label>
-            <input type="text" name="phone" className="Celular" onChange={handleChange}/>
+            <input className="border border-gray-400 p-2 rounded" type="text" name="phone" onChange={handleChange}/>
             <label htmlFor="description">Consulta</label>
-            <input type="text" name="description" onChange={handleChange}/>
-            <button type="submit" onClick={handleSubmit}>Enviar</button>
+            <input className="border border-gray-400 p-2 rounded" type="text" name="description" onChange={handleChange}/>
+            <button type="submit" onClick={handleSubmit} className="bg-blue-600 p-5 text-xl rounded active:bg-blue-500 cursor-pointer">Enviar</button>
         </form>
-    </div>
     )
 }
 

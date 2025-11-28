@@ -37,15 +37,39 @@ export const Login = ()=>{
         if(res.message === "Login exitoso") return (showLoginAlert("Sesion iniciada", "success"), window.location.href = "/tickets-manager");
     }
     return(
-        <div className="login">
-            <h1 className="titleFont">Iniciar sesion</h1>
-            <form action="">
-                <label htmlFor="email" className="fourthTitleFont">Email</label>
-                <input type="text" name="email" onChange={handleChange}/>
-                <label htmlFor="password" className="fourthTitleFont">Constrasena</label>
-                <input type="text" name="password" onChange={handleChange}/>
-                <button onClick={handleSubmit}>iniciar sesion</button>
-            </form>
-        </div>
+<div className=" flex flex-col items-center justify-center p-4 mb-20">
+  <h1 className="text-3xl font-semibold text-blue-700">Iniciar sesión</h1>
+
+  <form className="flex flex-col gap-4 bg-white p-6 rounded-xl shadow-md w-full max-w-sm border border-blue-200">
+    
+    <label htmlFor="email" className="text-lg font-medium text-black text-center">
+      Email
+    </label>
+    <input
+      type="text"
+      name="email"
+      onChange={handleChange}
+      className="border border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <label htmlFor="password" className="text-lg font-medium text-black">
+      Contraseña
+    </label>
+    <input
+      type="password"
+      name="password"
+      onChange={handleChange}
+      className="border border-blue-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <button
+      onClick={handleSubmit}
+      className="mt-2 bg-blue-600 text-white py-2 rounded-lg cursor-pointer hover:shadow-lg hover:bg-blue-700 transition font-medium active:scale-95"
+    >
+      Iniciar sesión
+    </button>
+  </form>
+</div>
+
     )
 }

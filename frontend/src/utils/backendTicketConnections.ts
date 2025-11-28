@@ -11,7 +11,7 @@ interface Ticket{
 async function getTickets(): Promise<Ticket[]>{
     try {
         const res = await ticketConnect.get<Ticket[]>('/', {
-        withCredentials: true
+        withCredentials: true,
         })
 
         return res.data
