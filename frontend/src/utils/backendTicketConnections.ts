@@ -52,7 +52,11 @@ async function addTicketComment(id:number, comment: string) {
 
 async function deleteTicket(id:number){
     try {
-        const res = await ticketConnect.delete(`/${id}`)
+        const res = await ticketConnect.delete('/',{
+            data: {
+                id: id
+            }
+        })
 
         return res.data
     } catch (error) {
