@@ -15,7 +15,7 @@ function SocialMedia({data}: {data: object}) {
         <div className="socialMedia">
         <ul className="socialMedia__list">
             {Object.entries(data).map(([key, value]) => (
-            <li key={key}>
+            <li key={key} className="text-3xl flex justify-center hover:text-white-300 hover:scale-110 transition">
                 <a href={value.url} target="_blank" rel="noopener noreferrer">
                     {findIcon(value.key)}
                 </a>

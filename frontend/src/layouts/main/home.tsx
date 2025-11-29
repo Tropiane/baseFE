@@ -5,7 +5,7 @@ import Presentation from "./presentation"
 
 function Home() {
     return (
-        <div className="home">
+        <div className="flex flex-col gap-10 my-10">
         <ScrollView>
             <Presentation></Presentation>
         </ScrollView>

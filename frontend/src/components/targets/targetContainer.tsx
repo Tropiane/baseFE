@@ -1,16 +1,17 @@
 import { config } from "../../config";
-import Target from "./target";
-import TargetCarousel from "./targetCarousel";
+import TargetPlan from "./targetPlan";
 
 const TargetContainer = () => {
+  const planData= config.planData;
   return (
-    <section className="targetContainer" id="planes">
+    <section className="targetContainer mt-[20vh]" id="planes">
       <h2 className="secondTitleFont">Nuestros Planes</h2>
-        <TargetCarousel>
-        {config.planData.map((plan) => (
-            <Target targetClass="targetInCarousel" isPlan={true} {...plan} key={plan.id}/>
+      <div className="flex flex-col justify-center items-center gap-8 mt-6">
+
+        {planData.map((plan) => (
+          <TargetPlan key={plan.id} title={plan.title} description={plan.description} id={plan.id} position={plan.position} price={plan.price} features={plan.features}/>
         ))}
-        </TargetCarousel>
+      </div>
     </section>
   );
 };
