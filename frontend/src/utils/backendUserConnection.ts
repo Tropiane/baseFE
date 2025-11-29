@@ -9,15 +9,11 @@ const login = async (data: User)=>{
         const res = await userConnect.post('/',{
             email: data.email,
             password: data.password
-<<<<<<< HEAD
-        }, {withCredentials: true});
-        console.log(data);
-=======
         })
->>>>>>> bd64064e3ee075989f1660877270d22e39646bd5
         
         return res.data
     } catch (error) {
+        console.log(error);
         return 500
     }
 }
