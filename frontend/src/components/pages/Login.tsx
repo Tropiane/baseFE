@@ -36,8 +36,9 @@ export const Login = ()=>{
         
         if(res === 500) return showLoginAlert("error al iniciar sesion", "error");
         
-        if(res === "Login exitoso") {
+        if(res.message === "Login exitoso") {
               showLoginAlert("Inicio de sesion exitoso", "success");
+              setUser(res);
               setTimeout(()=>{
                 window.location.href = "/tickets-manager";
               }, 2000)
