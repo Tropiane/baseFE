@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+
+import { UserContext } from "../../hooks/UserContext";
 import { login } from "../../utils/backendUserConnection";
 import { showLoginAlert } from "../../utils/alerts";
 
@@ -8,7 +10,7 @@ export const Login = ()=>{
         email:"",
         password: ""
     });
-
+    const {setUser} = useContext(UserContext);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         setFormData({
             ...formData,
@@ -34,7 +36,7 @@ export const Login = ()=>{
         
         if(res === 500) return showLoginAlert("error al iniciar sesion", "error");
         
-        if(res.message === "Login exitoso") {
+        if(res === "Login exitoso") {
               showLoginAlert("Inicio de sesion exitoso", "success");
               setTimeout(()=>{
                 window.location.href = "/tickets-manager";

@@ -82,6 +82,20 @@ export const config = {
             className: "green"
         }
     ],
+    navBarLinksLogin: [
+        {
+            id:1,
+            text: "Inicio",
+            link: "/",
+            className: "green"
+        },
+        {
+            id: 3,
+            text: "Tickets Manager",
+            link: "/tickets-manager",
+            className: "green"
+        },
+    ],
     navBarLinks: [
         {
             id:1,
@@ -93,12 +107,6 @@ export const config = {
             id: 2,
             text: "Ingreso",
             link: '/login'
-        },
-        {
-            id: 3,
-            text: "Tickets Manager",
-            link: "/tickets-manager",
-            className: "green"
         }
     ],
     globalCTA: {
