@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+
+import { UserContext } from "../../hooks/UserContext";
 import { login } from "../../utils/backendUserConnection";
 import { showLoginAlert } from "../../utils/alerts";
 
@@ -8,7 +10,7 @@ export const Login = ()=>{
         email:"",
         password: ""
     });
-
+    const {setUser, setToken} = useContext(UserContext);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         setFormData({
             ...formData,
@@ -30,16 +32,17 @@ export const Login = ()=>{
         };
 
         const res = await login(formData);
-        console.log(res);
         
         if(res === 500) return showLoginAlert("error al iniciar sesion", "error");
         
-        if(res.message === "Login exitoso") {
-              showLoginAlert("Inicio de sesion exitoso", "success");
-              setTimeout(()=>{
-                window.location.href = "/tickets-manager";
-              }, 2000)
-        }
+        showLoginAlert("Inicio de sesion exitoso", "success");
+        setToken(res.accessToken);
+        console.log(res.accessToken);
+           
+          setUser("authenticated");
+              // setTimeout(()=>{
+              //   window.location.href = "/tickets-manager";
+              // }, 2000)
     }
     return(
 <div className=" flex flex-col items-center justify-center p-4 mb-20">

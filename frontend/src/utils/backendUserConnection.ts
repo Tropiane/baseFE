@@ -11,7 +11,7 @@ const login = async (data: User)=>{
             password: data.password
         })
         
-        return res.data
+        return {accessToken: res.data.accessToken};
     } catch (error) {
         console.log(error);
         return 500
