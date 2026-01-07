@@ -30,7 +30,9 @@ async function addTicketComment(id: number, comment: string) {
 }
 
 async function deleteTicket(id: number) {
-  const res = await ticketConnect.delete(`/${id}`);
+  const res = await ticketConnect.delete(`/`, {
+    data: { id },
+  });
   return res.data;
 }
 

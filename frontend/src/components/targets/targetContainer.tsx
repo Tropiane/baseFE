@@ -5,7 +5,7 @@ const TargetContainer = () => {
   const planData= config.planData;
   return (
     <section className="targetContainer mt-[20vh]" id="planes">
-      <h2 className="secondTitleFont">Nuestros Planes</h2>
+      <h2 className="secondTitleFont text-center border-b-4 border-blue-500">Nuestros Planes</h2>
       <div className="flex flex-col justify-center items-center gap-8 mt-6">
 
         {planData.map((plan) => (

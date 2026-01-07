@@ -2,16 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { UserContext } from "../hooks/UserContext";
 
-interface User{
-    id: string;
-    name: string;
-    email: string;
-    role?: string
-}
-
-
 export const UserProvider = ({children}: {children: React.ReactNode})=>{
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<string | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const logout = ()=>{
         setUser(null)

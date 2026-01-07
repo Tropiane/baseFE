@@ -39,10 +39,7 @@ export const Login = ()=>{
         setToken(res.accessToken);
         console.log(res.accessToken);
            
-          setUser("authenticated");
-              // setTimeout(()=>{
-              //   window.location.href = "/tickets-manager";
-              // }, 2000)
+        setUser("authenticated");
     }
     return(
 <div className=" flex flex-col items-center justify-center p-4 mb-20">
