@@ -6,7 +6,7 @@ interface User{
 
 const login = async (data: User)=>{
     try {
-        const res = await userConnect.post('/',{
+        const res = await userConnect.post('',{
             email: data.email,
             password: data.password
         })
