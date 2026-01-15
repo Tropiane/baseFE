@@ -4,18 +4,9 @@ import { getTickets } from "../utils/backendTicketConnections";
 import { UserContext } from "./UserContext";
 
 // Backend response type
-interface BackendTicket {
-  formId?: number;
-  name: string;
-  email: string;
-  phone: string;
-  description: string;
-  status?: string;
-  comments?: string[];
-}
 
 export const useTickets = () => {
-  const {token} = useContext(UserContext);
+  const {token, setToken} = useContext(UserContext);
   const [data, setData] = useState<Ticket[]>([]);
   const [pendingTickets, setPendingTickets] = useState<Ticket[]>([]);
   const [inProgressTickets, setInProgressTickets] = useState<Ticket[]>([]);
@@ -28,9 +19,9 @@ export const useTickets = () => {
       try {
         setLoading(true);
 
-        const res: BackendTicket[] = await getTickets(token ?? "");
+        const res = await getTickets();
         
-        const normalized: Ticket[] = res.map(ticket => ({
+        const normalized: Ticket[] = res.data.map(ticket => ({
           formId: ticket.formId ?? 0,
           name: ticket.name,
           email: ticket.email,
@@ -41,6 +32,7 @@ export const useTickets = () => {
         }));
 
         setData(normalized);
+        setToken(res.headers.authorization.split(" ")[1]);
       } catch (err) {
         setError("Error al obtener los tickets");
         console.error(err);
@@ -50,7 +42,7 @@ export const useTickets = () => {
     };
 
     fetchTickets();
-  }, [token]);
+  }, [token, setToken]);
 
   useEffect(() => {
     setPendingTickets(

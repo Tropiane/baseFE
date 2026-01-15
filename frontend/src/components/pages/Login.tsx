@@ -37,7 +37,6 @@ export const Login = ()=>{
         
         showLoginAlert("Inicio de sesion exitoso", "success");
         setToken(res.accessToken);
-        console.log(res.accessToken);
            
         setUser("authenticated");
     }

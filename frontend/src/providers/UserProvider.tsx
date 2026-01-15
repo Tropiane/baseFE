@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 
 import { UserContext } from "../hooks/UserContext";
+import { setAccessToken } from "../utils/auth.token";
 
 export const UserProvider = ({children}: {children: React.ReactNode})=>{
     const [user, setUser] = useState<string | null>(null);
-    const [token, setToken] = useState<string | null>(null);
+    const [token, setTokenState] = useState<string | null>(null);
     const logout = ()=>{
         setUser(null)
+    }
+
+    const setToken = (token: string) => {
+        setTokenState(token)
+        setAccessToken(token)
     }
 
     useEffect(()=>{
         const user = localStorage.getItem('user')
         if(user){
-            setUser(JSON.parse(user))
+            setUser(user)
         }
     }, [])
 

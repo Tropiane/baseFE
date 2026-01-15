@@ -1,6 +1,8 @@
 import { ticketConnect } from "./axios.connection";
 
 interface Ticket {
+  comments: never[];
+  status: string;
   formId?: number;
   name: string;
   email: string;
@@ -8,15 +10,12 @@ interface Ticket {
   description: string;
 }
 
-async function getTickets(token: string): Promise<Ticket[]> {
-  const res = await ticketConnect.get<Ticket[]>("/api/form", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+async function getTickets() {
+  const res = await ticketConnect.get<Ticket[]>("/api/form");
   console.log(res);
   
-  return res.data;
+  const {data, headers} = res;
+  return {data, headers};
 }
 
 async function createTicket(ticket: Ticket): Promise<Ticket[]> {
