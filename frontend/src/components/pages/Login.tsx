@@ -37,8 +37,10 @@ export const Login = ()=>{
         
         showLoginAlert("Inicio de sesion exitoso", "success");
         setToken(res.accessToken);
-           
+        localStorage.setItem("refreshToken", res.refreshToken);
         setUser("authenticated");
+
+        setTimeout(() => location.href = "/tickets-manager", 2000);
     }
     return(
 <div className=" flex flex-col items-center justify-center p-4 mb-20">

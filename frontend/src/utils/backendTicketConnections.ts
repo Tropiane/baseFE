@@ -12,7 +12,6 @@ interface Ticket {
 
 async function getTickets() {
   const res = await ticketConnect.get<Ticket[]>("/api/form");
-  console.log(res);
   
   const {data, headers} = res;
   return {data, headers};
