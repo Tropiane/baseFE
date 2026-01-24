@@ -1,19 +1,12 @@
 import { ticketConnect } from "./axios.connection";
 
-interface Ticket {
-  comments: never[];
-  status: string;
-  formId?: number;
-  name: string;
-  email: string;
-  phone: string;
-  description: string;
-}
+import type { Ticket } from "../components/tickets/TicketInterfaces";
 
 async function getTickets() {
   const res = await ticketConnect.get<Ticket[]>("/api/form");
   
   const {data, headers} = res;
+  console.log(data);
   return {data, headers};
 }
 

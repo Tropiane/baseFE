@@ -31,11 +31,13 @@ export const useTickets = () => {
           phone: ticket.phone,
           description: ticket.description,
           status: ticket.status ?? "Pendiente",
-          comments: ticket.comments ?? []
+          comments: ticket.comments ?? [],
+          sendAt: ticket.sendAt ?? "",
+          closedAt: ticket.closedAt ?? null,
+          assignedTo: ticket.assignedTo ?? "",
+          priority: ticket.priority ?? "Normal"
         }));
-
         setData(normalized);
-
         // Solo seteamos token si el backend envía uno nuevo
         const authHeader = res.headers?.authorization;
         if (authHeader?.startsWith("Bearer ")) {
@@ -66,7 +68,11 @@ export const useTickets = () => {
               phone: ticket.phone,
               description: ticket.description,
               status: ticket.status ?? "Pendiente",
-              comments: ticket.comments ?? []
+              comments: ticket.comments ?? [],
+              sendAt: ticket.sendAt ?? "",
+              assignedTo: ticket.assignedTo ?? "",
+              closedAt: ticket.closedAt ?? null,
+              priority: ticket.priority ?? "Normal"
             }));
 
             setData(normalized);

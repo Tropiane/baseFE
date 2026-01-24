@@ -4,7 +4,7 @@ import { TicketTarget } from "../tickets/TicketTarget";
 export const TicketsManager = () => {
   const {data, closedTickets, inProgressTickets, pendingTickets} = useTickets()
 
-  if(data.length === 0) return <h1 className="text-center text-2xl font-bold text-gray-600">Cargando</h1>;
+  if(data.length === 0) return <h1 className="text-center text-2xl font-bold text-gray-600 bg-gray-400 rounded-2xl p-4 w-1/2 justify-self-center">No hay tickets para mostrar</h1>;
   return (
     <>
       <h1 className="text-center text-4xl my-8">Gestor de Tickets</h1>
@@ -16,15 +16,14 @@ export const TicketsManager = () => {
           <div className="flex flex-row flex-wrap gap-4 justify-center mt-4 mb-8">
             {pendingTickets.map((ticket) => (
               <TicketTarget
-              key={ticket.formId}
-              formId={ticket.formId}
-              description={ticket.description}
-              name={ticket.name}
-              phone={ticket.phone}
-              email={ticket.email}
-              status={ticket.status}
-              comments={ticket.comments}
-              />
+                key={ticket.formId}
+                formId={ticket.formId}
+                description={ticket.description}
+                name={ticket.name}
+                phone={ticket.phone}
+                email={ticket.email}
+                status={ticket.status}
+                comments={ticket.comments} sendAt={ticket.sendAt} priority={ticket.priority}/>
             ))}
           </div>
         </details>
@@ -35,15 +34,14 @@ export const TicketsManager = () => {
           <div className="flex flex-row flex-wrap gap-4 justify-center mt-4 mb-8">
             {inProgressTickets.map((ticket) => (
             <TicketTarget
-              key={ticket.formId}
-              formId={ticket.formId}
-              description={ticket.description}
-              name={ticket.name}
-              phone={ticket.phone}
-              email={ticket.email}
-              status={ticket.status}
-              comments={ticket.comments}
-              />
+                key={ticket.formId}
+                formId={ticket.formId}
+                description={ticket.description}
+                name={ticket.name}
+                phone={ticket.phone}
+                email={ticket.email}
+                status={ticket.status}
+                comments={ticket.comments} sendAt={ticket.sendAt} priority={ticket.priority}/>
           ))}
           </div>
         </details>
@@ -54,15 +52,14 @@ export const TicketsManager = () => {
         <div className="flex flex-row flex-wrap gap-4 justify-center mt-4 mb-8">
           {closedTickets.map((ticket) => (
           <TicketTarget
-            key={ticket.formId}
-            formId={ticket.formId}
-            description={ticket.description}
-            name={ticket.name}
-            phone={ticket.phone}
-            email={ticket.email}
-            status={ticket.status}
-            comments={ticket.comments}
-          />
+              key={ticket.formId}
+              formId={ticket.formId}
+              description={ticket.description}
+              name={ticket.name}
+              phone={ticket.phone}
+              email={ticket.email}
+              status={ticket.status}
+              comments={ticket.comments} sendAt={ticket.sendAt} priority={ticket.priority}/>
         ))}
         </div>
       </details>

@@ -95,6 +95,12 @@ export const config = {
             link: "/tickets-manager",
             className: "green"
         },
+        {
+            id: 4,
+            text: "Crear Ticket",
+            link: "/create-ticket",
+            className: "green"
+        }
     ],
     navBarLinks: [
         {
