@@ -24,9 +24,9 @@ export const ticketConnect = createClient(
 );
 
 export const userConnect = createClient(
-    import.meta.env.USER_API || import.meta.env.VITE_USER_API
+    import.meta.env.TICKET_API || import.meta.env.VITE_USER_API
 );
 
 export const apiConnect = createClient(
-    import.meta.env.API || import.meta.env.VITE_API
+    import.meta.env.TICKET_API || import.meta.env.VITE_API
 );
