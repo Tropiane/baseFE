@@ -11,7 +11,6 @@ const createClient = (baseURL?: string) => {
         const token = getAuthToken();
         if(token){
             config.headers.Authorization = `Bearer ${token}`;
-            console.log(token);
             
         }
         return config

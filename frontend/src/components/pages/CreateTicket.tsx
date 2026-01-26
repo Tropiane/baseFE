@@ -4,7 +4,7 @@ import { createTicket } from "../../utils/backendTicketConnections";
 import type { Ticket } from "../tickets/TicketInterfaces";
 
 export const CreateTicket = () => {
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
@@ -12,148 +12,175 @@ export const CreateTicket = () => {
     assignedTo: "",
     status: "Pendiente" as Ticket["status"],
     priority: "Media" as Ticket["priority"],
-    });
+  });
 
-    const inputClass = " w-full px-4 py-3 text-sm text-gray-800 bg-white border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition";
+  const inputClass =
+    "w-full px-4 py-3 text-sm text-gray-800 bg-white border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition";
 
+  const labelClass = "text-sm font-medium text-gray-600";
 
-    const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-    ) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-        ...prev,
-        [name]: value,
-    }));
-    };
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-
-    const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const { name, email, phone, description } = formData;
 
     if (!name || !email || !phone || !description) {
-        return showTicketAlert("Todos los campos son obligatorios", "error");
+      return showTicketAlert("Todos los campos son obligatorios", "error");
     }
 
     try {
-        await createTicket({
+      await createTicket({
         formId: 0,
-        name,
-        email,
-        phone,
-        description,
-        status: formData.status,
-        priority: formData.priority,
+        ...formData,
         sendAt: Date.now(),
-        comments: [],
-        assignedTo: formData.assignedTo,
         closedAt: Date.now(),
-        });
+        comments: [],
+      });
 
-        showTicketAlert("Caso creado correctamente", "success");
+      showTicketAlert("Caso creado correctamente", "success");
 
-        setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            description: "",
-            assignedTo: "",
-            status: "Pendiente",
-            priority: "Media",
-        });
-
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        description: "",
+        assignedTo: "",
+        status: "Pendiente",
+        priority: "Alta",
+      });
     } catch (error) {
-        showTicketAlert("Error al crear el caso", "error");
-        console.error(error);
+      showTicketAlert("Error al crear el caso", "error");
+      console.error(error);
     }
-    };
+  };
 
-    return (
-    <div className="h-screen bg-gray-400 bg-opacity-50 flex justify-center items-start p-6">
-      <div className="h-full w-full bg-gray-800 p-6 rounded-lg shadow text-center">
-        <h1 className="text-xl font-semibold text-white mb-6">
-          Crear nuevo caso
-        </h1>
+  return (
+    <section className="w-full min-h-screen bg-gray-100 px-6 py-10 flex justify-center">
+      <div className="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+        
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-2xl font-semibold text-gray-800">
+            Crear nuevo ticket
+          </h1>
+          <p className="text-sm text-gray-500 mt-1">
+            Completa los datos del cliente y el caso a gestionar
+          </p>
+        </div>
 
-        <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Nombre del cliente"
-            className= {inputClass}
-            value={formData.name}
-            onChange={handleChange}
-          />
+        <form onSubmit={handleSubmit} className="space-y-8">
+          
+          {/* Datos del cliente */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className={labelClass}>Nombre</label>
+              <input
+                type="text"
+                name="name"
+                className={inputClass}
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            className= {inputClass}
-            value={formData.email}
-            onChange={handleChange}
-          />
+            <div>
+              <label className={labelClass}>Correo electrónico</label>
+              <input
+                type="email"
+                name="email"
+                className={inputClass}
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
 
-          <input
-            type="text"
-            name="phone"
-            placeholder="Teléfono"
-            className= {inputClass}
-            value={formData.phone}
-            onChange={handleChange}
-          />
+            <div>
+              <label className={labelClass}>Teléfono</label>
+              <input
+                type="text"
+                name="phone"
+                className={inputClass}
+                value={formData.phone}
+                onChange={handleChange}
+              />
+            </div>
 
-          <textarea
-            name="description"
-            placeholder="Descripción del caso"
-            className= {inputClass + " resize-none"}
-            value={formData.description}
-            onChange={handleChange}
-          />
-
-          <input
-            type="text"
-            name="assignedTo"
-            placeholder="Asignado a"
-            className= {inputClass}
-            value={formData.assignedTo}
-            onChange={handleChange}
-          />
-
-          <div className="flex gap-4">
-            <select
-              name="status"
-              className=" w-full px-4 py-3 text-sm text-gray-800 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition appearance-none "
-              value={formData.status}
-              onChange={handleChange}
-            >
-              <option value="Pendiente">Pendiente</option>
-              <option value="En Curso">En curso</option>
-              <option value="Finalizado">Finalizado</option>
-            </select>
-
-            <select
-              name="priority"
-              className=" w-full px-4 py-3 text-sm text-gray-800 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition appearance-none "
-              value={formData.priority}
-              onChange={handleChange}
-            >
-              <option value="Baja">Baja</option>
-              <option value="Media">Media</option>
-              <option value="Alta">Alta</option>
-            </select>
+            <div>
+              <label className={labelClass}>Asignado a</label>
+              <input
+                type="text"
+                name="assignedTo"
+                className={inputClass}
+                value={formData.assignedTo}
+                onChange={handleChange}
+              />
+            </div>
           </div>
 
-          <button
-            type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
-          >
-            Crear caso
-          </button>
+          {/* Descripción */}
+          <div>
+            <label className={labelClass}>Descripción del caso</label>
+            <textarea
+              name="description"
+              rows={4}
+              className={`${inputClass} resize-none`}
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Estado y prioridad */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className={labelClass}>Estado</label>
+              <select
+                name="status"
+                className={inputClass}
+                value={formData.status}
+                onChange={handleChange}
+              >
+                <option>Pendiente</option>
+                <option>En Curso</option>
+                <option>Finalizado</option>
+              </select>
+            </div>
+
+            <div>
+              <label className={labelClass}>Prioridad</label>
+              <select
+                name="priority"
+                className={inputClass}
+                value={formData.priority}
+                onChange={handleChange}
+              >
+                <option>Baja</option>
+                <option>Media</option>
+                <option>Alta</option>
+              </select>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="flex justify-end pt-4">
+            <button
+              type="submit"
+              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition"
+            >
+              Crear ticket
+            </button>
+          </div>
+
         </form>
       </div>
-    </div>
+    </section>
   );
 };

@@ -10,9 +10,9 @@ export function TicketTarget(data: Ticket){
   const [comments, setComments] = useState(data.comments || []);
   const [status, setStatus] = useState(data.status || '');
   
-
     useEffect(() => {
         setComments(data.comments || []);
+        
     }, [data.comments]);
 
     //Ticket Actions

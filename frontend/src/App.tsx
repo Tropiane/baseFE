@@ -4,6 +4,7 @@ import Header from './layouts/header/header'
 import Main from './layouts/main/main'
 import Footer from './layouts/footer/footer'
 import { UserProvider } from './providers/UserProvider'
+import { Section } from './layouts/section/Section'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>
       <UserProvider>
           <Header></Header>
+          <Section></Section>
           <Main></Main>
           <Footer></Footer>
       </UserProvider>

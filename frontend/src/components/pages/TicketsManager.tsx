@@ -2,68 +2,74 @@ import { useTickets } from "../../hooks/useTickets";
 import { TicketTarget } from "../tickets/TicketTarget";
 
 export const TicketsManager = () => {
-  const {data, closedTickets, inProgressTickets, pendingTickets} = useTickets()
+  const {
+    data,
+    closedTickets,
+    inProgressTickets,
+    pendingTickets
+  } = useTickets();
 
-  if(data.length === 0) return <h1 className="text-center text-2xl font-bold text-gray-600 bg-gray-400 rounded-2xl p-4 w-1/2 justify-self-center">No hay tickets para mostrar</h1>;
+  if (data.length === 0) {
+    return (
+      <div className="flex justify-center mt-20">
+        <h1 className="text-xl font-semibold text-gray-500">
+          No hay tickets para mostrar
+        </h1>
+      </div>
+    );
+  }
+
   return (
-    <>
-      <h1 className="text-center text-4xl my-8">Gestor de Tickets</h1>
-      {/* //Pendientes */}
-      <div className="ticketsContainer px-4 py-8 min-h-screen bg-gray-100 flex flex-col gap-8 ">
+    <section className="w-full min-h-screen bg-gray-100 px-6 py-8 space-y-6">
 
-        <details>
-          <summary className="flex-row text-center bg-blue-500 rounded-2xl text-xl p-5">Pendientes {pendingTickets.length}</summary>
-          <div className="flex flex-row flex-wrap gap-4 justify-center mt-4 mb-8">
-            {pendingTickets.map((ticket) => (
-              <TicketTarget
-                key={ticket.formId}
-                formId={ticket.formId}
-                description={ticket.description}
-                name={ticket.name}
-                phone={ticket.phone}
-                email={ticket.email}
-                status={ticket.status}
-                comments={ticket.comments} sendAt={ticket.sendAt} priority={ticket.priority}/>
-            ))}
-          </div>
-        </details>
+      {/* PENDIENTES */}
+      <details className="group bg-white rounded-2xl shadow-sm border border-gray-200">
+        <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-lg font-semibold text-blue-700">
+          <span>Pendientes</span>
+          <span className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+            {pendingTickets.length}
+          </span>
+        </summary>
 
-        {/* //En Curso */}
-        <details>
-          <summary className="flex-row text-center bg-green-400 rounded-2xl text-xl p-5">En curso {inProgressTickets.length}</summary>
-          <div className="flex flex-row flex-wrap gap-4 justify-center mt-4 mb-8">
-            {inProgressTickets.map((ticket) => (
-            <TicketTarget
-                key={ticket.formId}
-                formId={ticket.formId}
-                description={ticket.description}
-                name={ticket.name}
-                phone={ticket.phone}
-                email={ticket.email}
-                status={ticket.status}
-                comments={ticket.comments} sendAt={ticket.sendAt} priority={ticket.priority}/>
+        <div className="px-6 py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {pendingTickets.map(ticket => (
+            <TicketTarget key={ticket.formId} {...ticket} />
           ))}
-          </div>
-        </details>
-
-        <details>
-          <summary className="flex-row text-center bg-gray-500 rounded-2xl text-xl p-5">Finalizados {closedTickets.length}</summary>
-        {/* // Finalizados */}
-        <div className="flex flex-row flex-wrap gap-4 justify-center mt-4 mb-8">
-          {closedTickets.map((ticket) => (
-          <TicketTarget
-              key={ticket.formId}
-              formId={ticket.formId}
-              description={ticket.description}
-              name={ticket.name}
-              phone={ticket.phone}
-              email={ticket.email}
-              status={ticket.status}
-              comments={ticket.comments} sendAt={ticket.sendAt} priority={ticket.priority}/>
-        ))}
         </div>
       </details>
-      </div>
-    </>
+
+      {/* EN CURSO */}
+      <details className="group bg-white rounded-2xl shadow-sm border border-gray-200">
+        <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-lg font-semibold text-green-700">
+          <span>En curso</span>
+          <span className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
+            {inProgressTickets.length}
+          </span>
+        </summary>
+
+        <div className="px-6 py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {inProgressTickets.map(ticket => (
+            <TicketTarget key={ticket.formId} {...ticket} />
+          ))}
+        </div>
+      </details>
+
+      {/* FINALIZADOS */}
+      <details className="group bg-white rounded-2xl shadow-sm border border-gray-200">
+        <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-lg font-semibold text-gray-700">
+          <span>Finalizados</span>
+          <span className="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
+            {closedTickets.length}
+          </span>
+        </summary>
+
+        <div className="px-6 py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {closedTickets.map(ticket => (
+            <TicketTarget key={ticket.formId} {...ticket} />
+          ))}
+        </div>
+      </details>
+
+    </section>
   );
 };

@@ -1,17 +1,17 @@
 import ScrollView from "../../components/animations/scrollView"
-import TargetContainer from "../../components/targets/targetContainer"
-import Presentation from "./presentation"
+import { TicketsManager } from "../../components/pages/TicketsManager"
+import { TicketQuantity } from "../../components/targets/TicketQuantity"
 
 
 function Home() {
     return (
         <div className="flex flex-col gap-10 my-10">
         <ScrollView>
-            <Presentation></Presentation>
+            <TicketQuantity></TicketQuantity>
         </ScrollView>
         
         <ScrollView>
-            <TargetContainer></TargetContainer>
+            <TicketsManager></TicketsManager>
         </ScrollView>
         </div>
     )

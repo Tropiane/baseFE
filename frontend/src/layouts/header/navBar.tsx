@@ -1,69 +1,83 @@
 import { useContext } from "react";
-import { UserContext } from "../../hooks/UserContext.tsx";
+import { NavLink } from "react-router-dom";
+import { UserContext } from "../../hooks/UserContext";
+import { IoHome, IoTicket, IoAddCircle, IoLogIn } from "react-icons/io5";
 
-import LinkTarget from "../../components/inputs/linkTarget.tsx";
-import { IoMenuSharp } from "react-icons/io5";
-import { config } from "../../config.ts";
-
-const enlaces = config.navBarLinks;
-const enlacesLogin = config.navBarLinksLogin;
+const enlaces = [
+  {
+    id: 1,
+    text: "Inicio",
+    link: "/",
+    icon: <IoHome />,
+  },
+  {
+    id: 2,
+    text: "Tickets",
+    link: "/tickets-manager",
+    icon: <IoTicket />,
+  },
+  {
+    id: 3,
+    text: "Crear ticket",
+    link: "/create-ticket",
+    icon: <IoAddCircle />,
+  },
+];
 
 function NavBar({ isFooter }: { isFooter: boolean }) {
-  const phoneWidth = window.matchMedia("(max-width: 480px)").matches;
-  const tabletWidth = window.matchMedia("(max-width: 768px)").matches;
+  const { user } = useContext(UserContext);
 
-  const {user} = useContext(UserContext);
-
-  // Footer version
-  if (isFooter === true) {
+  /* FOOTER */
+  if (isFooter) {
     return (
-      <div className="flex flex-col items-center gap-4 py-6 text-white">
-        {enlaces.map((enlace) => (
-          <LinkTarget key={enlace.id} link={enlace.link} text={enlace.text} />
-        ))}
-      </div>
-    );
-  }
-  // Login version
-  if (user) {
-    return (
-      <nav className="flex flex-row gap-8 items-center text-black py-4 px-6 shadow-md">
-        {enlacesLogin.map((enlace) => (
-          <LinkTarget key={enlace.id} link={enlace.link} text={enlace.text} />
+      <nav className="flex flex-col items-center gap-4 py-6 text-gray-400">
+        {enlaces.map(e => (
+          <NavLink
+            key={e.id}
+            to={e.link}
+            className="hover:text-blue-500 transition"
+          >
+            {e.text}
+          </NavLink>
         ))}
       </nav>
     );
   }
-  // Mobile / Tablet version
-  if (phoneWidth === true || tabletWidth === true) {
-    return (
-      <nav className="w-full text-black p-4">
-        <details className="w-full">
-          <summary className="flex items-center cursor-pointer select-none text-xl">
-            <IoMenuSharp className="text-2xl" />
-          </summary>
 
-          <div className="mt-4 flex flex-col gap-3 pl-2 border-l border-gray-700">
-            <a href="#footer" className="text-lg hover:text-blue-400 transition">Contacto</a>
-            <a href="#planes" className="text-lg hover:text-blue-400 transition">Planes</a>
-            {enlaces.map((enlace) => (
-              <LinkTarget key={enlace.id} link={enlace.link} text={enlace.text} />
-            ))}
-          </div>
-        </details>
+  /* SOLO ADMIN / LOGUEADO */
+  if (!user) {
+    return (
+      <nav className="flex flex-col items-center gap-4 py-6 text-gray-400">
+        <a href="/login" className=" text-2xl text-amber-50 hover:text-blue-500 transition">Iniciar sesion <IoLogIn /></a>
       </nav>
     );
   }
 
-  // Desktop version
   return (
-    <nav className="flex flex-row gap-8 items-center text-black py-4 px-6 shadow-md">
-      <a href="#footer" className="text-lg hover:text-blue-400 transition">Contacto</a>
-      <a href="#planes" className="text-lg hover:text-blue-400 transition">Planes</a>
-      {enlaces.map((enlace) => (
-        <LinkTarget key={enlace.id} link={enlace.link} text={enlace.text} />
+    <aside className="hidden md:flex flex-col w-20 bg-white border-r border-gray-200 shadow-sm items-center py-6 gap-8">
+      
+      {enlaces.map(e => (
+        <NavLink
+          key={e.id}
+          to={e.link}
+          title={e.text}
+          className={({ isActive }) =>
+            `
+            flex items-center justify-center w-12 h-12 rounded-xl
+            text-2xl transition
+            ${
+              isActive
+                ? "bg-blue-100 text-blue-600"
+                : "text-gray-400 hover:text-blue-500 hover:bg-gray-100"
+            }
+            `
+          }
+        >
+          {e.icon}
+        </NavLink>
       ))}
-    </nav>
+
+    </aside>
   );
 }
 

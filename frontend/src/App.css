@@ -70,6 +70,28 @@ body #root {
   height: 100vh;
   margin: 0;
   padding: 0;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 8fr;
+  grid-template-areas: 
+  "header section"
+  "header main"
+  "header footer"
+  ;
+}
+
+#root > header {
+  grid-area: header;
+}
+#root > section {
+  grid-area: section;
+}
+#root > main {
+  grid-area: main;
+}
+#root > footer {
+  grid-area: footer;
 }
 
 body {

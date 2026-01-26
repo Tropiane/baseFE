@@ -9,7 +9,6 @@ async function refreshTokenAuth() {
             "x-refresh-token": localStorage.getItem("refreshToken") ?? "",
         }
     });
-    console.log(res);
     
     return res.data;
 }
