@@ -2,7 +2,7 @@ import { apiConnect } from "./axios.connection";
 
 async function refreshTokenAuth() {
     const res = await apiConnect.post(
-        "/api/auth/refresh", 
+        "/auth/refresh", 
         null,
         {
             headers: {
