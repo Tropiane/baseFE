@@ -20,8 +20,8 @@ export const TicketsManager = () => {
   }
 
   return (
-    <section className="w-full min-h-screen bg-gray-100 px-6 py-8 space-y-6">
-
+    <section className="w-full min-h-auto bg-gray-100 px-6 py-8 space-y-6">
+      <h2 className="text-2xl font-semibold text-center text-gray-800">Tickets por estado</h2>
       {/* PENDIENTES */}
       <details className="group bg-white rounded-2xl shadow-sm border border-gray-200">
         <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-lg font-semibold text-blue-700">

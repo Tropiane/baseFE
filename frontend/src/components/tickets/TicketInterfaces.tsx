@@ -1,5 +1,6 @@
 export interface Ticket {
   formId: number;
+
   name: string;
   email: string;
   phone: string;
@@ -7,6 +8,7 @@ export interface Ticket {
 
   sendAt: number;
   closedAt?: number | null;
+  updatedAt?: number;
 
   status: "Pendiente" | "En Curso" | "Finalizado";
   priority: "Baja" | "Media" | "Alta";

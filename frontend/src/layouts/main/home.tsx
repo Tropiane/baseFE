@@ -1,4 +1,5 @@
 import ScrollView from "../../components/animations/scrollView"
+import { TicketsFilter } from "../../components/pages/TicketsFilter"
 import { TicketsManager } from "../../components/pages/TicketsManager"
 import { TicketQuantity } from "../../components/targets/TicketQuantity"
 
@@ -12,6 +13,10 @@ function Home() {
         
         <ScrollView>
             <TicketsManager></TicketsManager>
+        </ScrollView>
+
+        <ScrollView>
+            <TicketsFilter></TicketsFilter>
         </ScrollView>
         </div>
     )

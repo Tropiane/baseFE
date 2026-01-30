@@ -6,13 +6,16 @@ async function getTickets() {
   const res = await ticketConnect.get<Ticket[]>("/api/form");
   
   const {data, headers} = res;
+  console.log(data);
+  
   return {data, headers};
 }
 
-async function createTicket(ticket: Ticket): Promise<Ticket[]> {
-  const res = await ticketConnect.post("/api/form", ticket);
+async function createTicket(ticket: Ticket): Promise<Ticket> {
+  const res = await ticketConnect.post<Ticket>("/api/form", ticket);
   return res.data;
 }
+
 
 async function addTicketComment(id: number, comment: string) {
   const res = await ticketConnect.patch("/api/form", { id, comment });

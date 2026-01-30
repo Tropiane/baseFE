@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import type { Ticket } from "../components/tickets/TicketInterfaces";
 import { getTickets } from "../utils/backendTicketConnections";
 import { UserContext } from "./UserContext";
@@ -8,9 +8,11 @@ export const useTickets = () => {
   const { setToken } = useContext(UserContext);
 
   const [data, setData] = useState<Ticket[]>([]);
-  const [pendingTickets, setPendingTickets] = useState<Ticket[]>([]);
-  const [inProgressTickets, setInProgressTickets] = useState<Ticket[]>([]);
-  const [closedTickets, setClosedTickets] = useState<Ticket[]>([]);
+  
+  const pendingTickets = useMemo(() => data.filter(ticket => ticket.status === "Pendiente"), [data]);
+  const inProgressTickets = useMemo(() => data.filter(ticket => ticket.status === "En Curso"), [data]);
+  const closedTickets = useMemo(() => data.filter(ticket => ticket.status === "Finalizado"), [data]);
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,7 +37,7 @@ export const useTickets = () => {
           sendAt: ticket.sendAt ?? "",
           closedAt: ticket.closedAt ?? null,
           assignedTo: ticket.assignedTo ?? "",
-          priority: ticket.priority ?? "Normal"
+          priority: ticket.priority ?? "Media"
         }));
         setData(normalized);
         // Solo seteamos token si el backend envía uno nuevo
@@ -96,13 +98,6 @@ export const useTickets = () => {
 
     fetchTickets();
   }, []); // No depende del token
-
-  // Separación de tickets por estado
-  useEffect(() => {
-    setPendingTickets(data.filter(ticket => ticket.status === "Pendiente"));
-    setInProgressTickets(data.filter(ticket => ticket.status === "En Curso"));
-    setClosedTickets(data.filter(ticket => ticket.status === "Finalizado"));
-  }, [data]);
 
   return {
     data,

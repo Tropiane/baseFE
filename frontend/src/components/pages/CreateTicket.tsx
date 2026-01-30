@@ -38,6 +38,7 @@ export const CreateTicket = () => {
     }
 
     try {
+      showTicketAlert("Caso creado correctamente", "success");
       await createTicket({
         formId: 0,
         ...formData,
@@ -46,7 +47,6 @@ export const CreateTicket = () => {
         comments: [],
       });
 
-      showTicketAlert("Caso creado correctamente", "success");
 
       setFormData({
         name: "",
