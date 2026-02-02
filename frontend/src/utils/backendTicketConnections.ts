@@ -6,7 +6,6 @@ async function getTickets() {
   const res = await ticketConnect.get<Ticket[]>("/api/form");
   
   const {data, headers} = res;
-  console.log(data);
   
   return {data, headers};
 }

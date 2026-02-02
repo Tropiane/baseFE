@@ -16,3 +16,11 @@ export interface Ticket {
   assignedTo?: string;
   comments?: string[];
 }
+
+export interface TicketFilters {
+  status?: "Pendiente" | "En Curso" | "Finalizado";
+  priority?: "Alta" | "Media" | "Baja";
+
+  onlyToday?: boolean;
+  onlyOverdue?: boolean;
+}

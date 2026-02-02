@@ -1,5 +1,5 @@
 import ScrollView from "../../components/animations/scrollView"
-import { TicketsFilter } from "../../components/pages/TicketsFilter"
+import { TicketsFilter } from "../../components/tickets/TicketsFilter"
 import { TicketsManager } from "../../components/pages/TicketsManager"
 import { TicketQuantity } from "../../components/targets/TicketQuantity"
 
