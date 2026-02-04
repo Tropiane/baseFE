@@ -10,6 +10,11 @@ async function getTickets() {
   return {data, headers};
 }
 
+async function getTicketById(id: number) {
+  const res = await ticketConnect.get<Ticket>(`/api/form/${id}`);
+  return res.data;
+}
+
 async function createTicket(ticket: Ticket): Promise<Ticket> {
   const res = await ticketConnect.post<Ticket>("/api/form", ticket);
   return res.data;
@@ -38,6 +43,7 @@ async function changeTicketStatus(formId: number, status: string) {
 
 export {
   getTickets,
+  getTicketById,
   createTicket,
   addTicketComment,
   deleteTicket,
