@@ -54,7 +54,7 @@ function NavBar({ isFooter }: { isFooter: boolean }) {
   }
 
   return (
-    <aside className="hidden md:flex flex-col w-20 bg-white border-r border-gray-200 shadow-sm items-center py-6 gap-8">
+    <aside className="hidden md:flex flex-col w-20 bg-white border-r rounded-2xl border-gray-200 shadow-sm items-center py-6 gap-8">
       
       {enlaces.map(e => (
         <NavLink

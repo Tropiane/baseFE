@@ -10,8 +10,9 @@ const login = async (data: User)=>{
             email: data.email,
             password: data.password
         });
+        console.log(res.data.rest);
         
-        return {accessToken: res.data.accessToken, refreshToken: res.data.refreshToken};
+        return {accessToken: res.data.accessToken, refreshToken: res.data.refreshToken, user: res.data.rest};
     } catch (error) {
         console.log(error);
         return 500

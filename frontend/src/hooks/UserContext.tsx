@@ -1,22 +1,22 @@
 import React from "react";
 
-// interface User{
-//     id: string;
-//     name: string;
-//     email: string;
-//     role?: string
-// }
+export interface User{
+    id: string;
+    name: string;
+    email: string;
+    role?: string
+}
 
 interface UserContextType{
-    user: string | null;
-    setUser: (user: string | null)=> void;
+    user: User | null;
+    setUser: (user: User | null)=> void;
     logout: ()=> void;
     token: string | null,
     setToken: (token: string) => void
 }
 
 export const UserContext = React.createContext<UserContextType>({
-    user:null,
+    user: null,
     setUser: ()=>{},
     logout: ()=>{},
     token: null,
