@@ -13,6 +13,7 @@ function Main() {
             <Route path="/tickets-manager" element={<TicketsManager/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/create-ticket" element={<CreateTicket/>}/>
+            <Route path="/view-ticket/:id" element={<h1>hola</h1>}/>
         </Routes>
     </main>
     )
