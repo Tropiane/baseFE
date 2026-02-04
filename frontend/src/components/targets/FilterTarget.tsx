@@ -54,7 +54,6 @@ export const FilterTarget: React.FC<FilterTargetProps> = ({
             <div
               key={ticket.formId}
               className="flex flex-col gap-1 p-3 bg-white rounded-xl border border-gray-100 shadow-sm"
-              onClick={() => window.location.href = `/view-ticket/${ticket.formId}`}
             >
               <p className="text-sm font-semibold">{ticket.name}</p>
               <p className="text-xs text-gray-600 line-clamp-2">
@@ -63,6 +62,7 @@ export const FilterTarget: React.FC<FilterTargetProps> = ({
               <span className="text-xs font-medium text-gray-500">
                 Estado: {ticket.status}
               </span>
+              <a href={`/view-ticket/${ticket.formId}`} className="text-sm p-0.5 rounded border border-blue-600 w-fit hover:bg-blue-600 hover:text-white" target="_blank">ver</a>
             </div>
           ))}
         </div>
