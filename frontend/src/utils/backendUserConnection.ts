@@ -19,8 +19,19 @@ const login = async (data: User)=>{
     }
 }
 
-
+const logout = async (id:string)=>{
+    try {
+        console.log("id is",id);
+        
+        const res = await userConnect.post('/api/user/logout', { id});
+        return res.data;
+    } catch (error) {
+        console.log(error);
+        return 500
+    }
+}
 
 export {
-    login
+    login,
+    logout
 }

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../hooks/UserContext";
 
 export const Section = () => {
-  const {user} = useContext(UserContext);
+  const {user, setLogout} = useContext(UserContext);
 
   if (!user) {
     return (
@@ -44,7 +44,8 @@ export const Section = () => {
 
         {/* Logout */}
         <button
-          className="text-sm font-medium text-gray-600 hover:text-red-600 transition-colors"
+          className="text-sm font-medium text-gray-600 hover:text-red-600 transition-colors cursor-pointer"
+          onClick={setLogout}
         >
           Cerrar sesión
         </button>

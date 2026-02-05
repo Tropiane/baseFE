@@ -54,7 +54,6 @@ export function TicketTarget(data: Ticket){
         }
         
     }
-    // console.log(typeof data.assignedTo);
     
     // ticket
 return (

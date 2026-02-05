@@ -10,7 +10,7 @@ export interface User{
 interface UserContextType{
     user: User | null;
     setUser: (user: User | null)=> void;
-    logout: ()=> void;
+    setLogout: ()=> void;
     token: string | null,
     setToken: (token: string) => void
 }
@@ -18,7 +18,7 @@ interface UserContextType{
 export const UserContext = React.createContext<UserContextType>({
     user: null,
     setUser: ()=>{},
-    logout: ()=>{},
+    setLogout: ()=>{},
     token: null,
     setToken: ()=>{}
 })
