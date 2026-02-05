@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -10,8 +10,10 @@ import {
   deleteTicket
 } from "../../utils/backendTicketConnections";
 import { showTicketAlert } from "../../utils/alerts";
+import { UserContext } from "../../hooks/UserContext";
 
 export const ViewTicket = () => {
+  const {user} = useContext(UserContext);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -24,13 +26,15 @@ export const ViewTicket = () => {
     const fetchTicket = async () => {
       if (!id) return;
       const res = await getTicketById(Number(id));
-      setData(res);
+      setData(res);      
       setComments(res.comments || []);
       setStatus(res.status);
     };
 
     fetchTicket();
   }, [id]);
+  console.log(data);
+  
 
   /* ======================
      ACTIONS
@@ -60,7 +64,7 @@ export const ViewTicket = () => {
       "success"
     );
     setStatus(newStatus);
-    await changeTicketStatus(data.formId, newStatus);
+    await changeTicketStatus(data.formId, newStatus, user?.name);
 
   };
 
@@ -144,6 +148,14 @@ export const ViewTicket = () => {
             <option value="Finalizado">Finalizado</option>
           </select>
         </div>
+
+        {/* Fechas */}
+          <div className="mt-4 ">
+            <div className="border-b-2 w-fit p-1">Creado el: <span className="font-bold">{new Date(data.sendAt).toLocaleString()} </span></div>
+            <div className="border-b-2 w-fit p-1">Fecha limite: <span className="font-bold">{data.limitDate ? new Date(data.limitDate).toLocaleString() : "N/A"} </span></div>
+            <div className="border-b-2 w-fit p-1">Cerrado el: <span className="font-bold">{data.closedAt ? new Date(data.closedAt).toLocaleString() : "N/A"} </span></div>
+            <div>Cerrado por: <span className="font-bold">{data.closedBy || "N/A"} </span></div>
+          </div>
 
         {/* Descripción */}
         <div>

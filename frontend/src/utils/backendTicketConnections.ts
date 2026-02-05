@@ -17,6 +17,8 @@ async function getTicketById(id: number) {
 
 async function createTicket(ticket: Ticket): Promise<Ticket> {
   const res = await ticketConnect.post<Ticket>("/api/form", ticket);
+  console.log(res);
+  
   return res.data;
 }
 
@@ -33,10 +35,11 @@ async function deleteTicket(id: number) {
   return res.data;
 }
 
-async function changeTicketStatus(formId: number, status: string) {
+async function changeTicketStatus(formId: number, status: string, userName?: string) {
   const res = await ticketConnect.patch("/api/form/change-status", {
     formId,
     status,
+    userName
   });
   return res.data;
 }

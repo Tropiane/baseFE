@@ -24,7 +24,12 @@ export const TicketsManager = ()=>{
     const statusEnCurso = useMemo(()=> data.filter(ticket => ticket.status === "En Curso"), [data]);
     const statusFinalizado = useMemo(()=> data.filter(ticket => ticket.status === "Finalizado"), [data]);
     const todayTickets = useMemo(()=> data.filter(ticket => new Date(ticket.sendAt).getTime() >= getTodayRange().start && new Date(ticket.sendAt).getTime() <= getTodayRange().end), [data]);
-    const overdueTickets = useMemo(()=> data.filter(ticket => new Date(ticket.sendAt).getTime() < getTodayRange().start), [data]);
+    const overdueTickets = useMemo(() => 
+        data.filter(ticket => {
+            const dateValue = ticket.limitDate !== undefined ? ticket.limitDate : ticket.sendAt;
+            return new Date(dateValue).getTime() < getTodayRange().start;
+        }), 
+    [data]);
     const allTickets = { priorityAlta, priorityBaja, priorityMedia, statusPendiente, statusEnCurso, statusFinalizado, todayTickets, overdueTickets};
     return allTickets
 }

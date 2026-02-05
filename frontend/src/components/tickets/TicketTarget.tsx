@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import type { Ticket } from "./TicketInterfaces";
 import { addTicketComment, changeTicketStatus, deleteTicket } from "../../utils/backendTicketConnections";
 import { showTicketAlert } from "../../utils/alerts";
+import { UserContext } from "../../hooks/UserContext";
 
 export function TicketTarget(data: Ticket){
+  const {user} = useContext(UserContext);
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState(data.comments || []);
   const [status, setStatus] = useState(data.status || '');
@@ -39,16 +41,17 @@ export function TicketTarget(data: Ticket){
         showTicketAlert("Ticket Eliminado", "success");
         await deleteTicket(data.formId);
     };
-
+    
     const changeStatus = async(e: React.ChangeEvent<HTMLSelectElement>)=>{
         const status = e.target.value;
+        
         if(status.length == 0 || status != "Pendiente" && status != "En Curso" && status != "Finalizado") return;
         
         try {
             setStatus(status);
 
             showTicketAlert(`Se ha cambiado el estado del ticket a ${status}`, "success");
-            await changeTicketStatus(data.formId, status);
+            await changeTicketStatus(data.formId, status, user?.name);
         } catch (error) {
             console.log('Error cambiando el estado', error);
         }
@@ -230,6 +233,7 @@ return (
         Eliminar ticket
       </button>
     </div>
+    <a href={`/view-ticket/${data.formId}`} className="text-blue-600 text-2xl font-bold text-center border border-gray-300 p-2 rounded-full hover:bg-gray-100" target="_blank">ver</a>
   </div>
 );
 

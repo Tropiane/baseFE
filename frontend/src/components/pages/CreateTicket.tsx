@@ -8,8 +8,11 @@ export const CreateTicket = () => {
     name: "",
     email: "",
     phone: "",
+
     description: "",
     assignedTo: "",
+    limitDate: "",
+
     status: "Pendiente" as Ticket["status"],
     priority: "Media" as Ticket["priority"],
   });
@@ -42,18 +45,22 @@ export const CreateTicket = () => {
       await createTicket({
         formId: 0,
         ...formData,
+        limitDate: formData.limitDate
+          ? new Date(formData.limitDate).getTime()
+          : undefined,
         sendAt: Date.now(),
-        closedAt: Date.now(),
+        closedAt: null,
         comments: [],
       });
 
-
+      
       setFormData({
         name: "",
         email: "",
         phone: "",
         description: "",
         assignedTo: "",
+        limitDate: "",
         status: "Pendiente",
         priority: "Alta",
       });
@@ -134,6 +141,19 @@ export const CreateTicket = () => {
               rows={4}
               className={`${inputClass} resize-none`}
               value={formData.description}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Fecha limite */}
+          
+          <div>
+            <label className={labelClass}>Fecha limite</label>
+            <input
+              type="date"
+              name="limitDate"
+              value={formData.limitDate}
+              className={inputClass}
               onChange={handleChange}
             />
           </div>

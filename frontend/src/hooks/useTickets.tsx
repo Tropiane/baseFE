@@ -28,16 +28,22 @@ export const useTickets = () => {
         // Normalización defensiva de datos
         const normalized: Ticket[] = res.data.map(ticket => ({
           formId: ticket.formId ?? 0,
+
           name: ticket.name,
           email: ticket.email,
           phone: ticket.phone,
           description: ticket.description,
-          status: ticket.status ?? "Pendiente",
-          comments: ticket.comments ?? [],
+
           sendAt: ticket.sendAt ?? "",
           closedAt: ticket.closedAt ?? null,
+          closedBy: ticket.closedBy ?? undefined,
+          limitDate: ticket.limitDate ?? undefined,
+
+          status: ticket.status ?? "Pendiente",
+          priority: ticket.priority ?? "Media",
+          
           assignedTo: ticket.assignedTo ?? "",
-          priority: ticket.priority ?? "Media"
+          comments: ticket.comments ?? [],
         }));
         setData(normalized);
         // Solo seteamos token si el backend envía uno nuevo
@@ -65,16 +71,22 @@ export const useTickets = () => {
 
             const normalized: Ticket[] = retryRes.data.map(ticket => ({
               formId: ticket.formId ?? 0,
+
               name: ticket.name,
               email: ticket.email,
               phone: ticket.phone,
               description: ticket.description,
-              status: ticket.status ?? "Pendiente",
-              comments: ticket.comments ?? [],
+
               sendAt: ticket.sendAt ?? "",
-              assignedTo: ticket.assignedTo ?? "",
               closedAt: ticket.closedAt ?? null,
-              priority: ticket.priority ?? "Normal"
+              closedBy: ticket.closedBy ?? undefined,
+              limitDate: ticket.limitDate ?? undefined,
+              
+              status: ticket.status ?? "Pendiente",
+              priority: ticket.priority ?? "Normal",
+              
+              assignedTo: ticket.assignedTo ?? "",
+              comments: ticket.comments ?? [],
             }));
 
             setData(normalized);
