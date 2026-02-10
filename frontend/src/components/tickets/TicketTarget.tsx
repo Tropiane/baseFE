@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import type { Ticket } from "./TicketInterfaces";
+import type { CommentsInterface, Ticket } from "./TicketInterfaces";
 import { addTicketComment, changeTicketStatus, deleteTicket } from "../../utils/backendTicketConnections";
 import { showTicketAlert } from "../../utils/alerts";
 import { UserContext } from "../../hooks/UserContext";
@@ -9,12 +9,11 @@ import { UserContext } from "../../hooks/UserContext";
 export function TicketTarget(data: Ticket){
   const {user} = useContext(UserContext);
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState(data.comments || []);
+  const [comments, setComments] = useState<CommentsInterface[]>(data.comments || []);
   const [status, setStatus] = useState(data.status || '');
   
     useEffect(() => {
         setComments(data.comments || []);
-        
     }, [data.comments]);
 
     //Ticket Actions
@@ -32,7 +31,7 @@ export function TicketTarget(data: Ticket){
         showTicketAlert("Comentario Agregado", "success");
         await addTicketComment(data.formId, addComment);
         setComment('');
-        setComments([...comments, addComment]);
+        setComments([...comments, {comment: addComment, createdAt: Date.now(), userName: user?.name || ""}]);
     };
 
     const handleDelete = async(e: React.MouseEvent<HTMLButtonElement>)=>{
@@ -176,8 +175,8 @@ return (
       </h4>
 
       {comments?.map((comment) => (
-        <li key={comment} className="text-sm text-gray-700 border-b pb-1">
-          {comment}
+        <li key={comment.comment} className="text-sm text-gray-700 border-b pb-1">
+          {comment.comment}
         </li>
       ))}
     </ul>

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 
-import type { Ticket } from "./TicketInterfaces";
+import type { CommentsInterface, Ticket } from "./TicketInterfaces";
 import {
   getTicketById,
   addTicketComment,
@@ -19,7 +19,7 @@ export const ViewTicket = () => {
 
   const [data, setData] = useState<Ticket | null>(null);
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState<string[]>([]);
+  const [comments, setComments] = useState<CommentsInterface[]>([]);
   const [status, setStatus] = useState("");
 
   useEffect(() => {
@@ -33,9 +33,7 @@ export const ViewTicket = () => {
 
     fetchTicket();
   }, [id]);
-  console.log(data);
   
-
   /* ======================
      ACTIONS
   ====================== */
@@ -43,9 +41,9 @@ export const ViewTicket = () => {
   const submitComment = async () => {
     const newComment = comment.trim().toLowerCase();
     if (!newComment || !data) return;
-
-    await addTicketComment(data.formId, newComment);
-    setComments(prev => [...prev, newComment]);
+    
+    await addTicketComment(data.formId, newComment, user?._id);
+    setComments(prev => [...prev, {comment: newComment, createdAt: Date.now(), userName: user?.name || ""}]);
     setComment("");
 
     showTicketAlert("Comentario agregado", "success");
@@ -176,7 +174,11 @@ export const ViewTicket = () => {
               key={i}
               className="bg-gray-50 border rounded-xl p-3 text-sm"
             >
-              {c}
+              <p>{c.comment}</p>
+              <ul>
+                <li>{c.userName}</li>
+                <li>{new Date(c.createdAt).toLocaleString()}</li>
+              </ul>
             </div>
           ))}
 

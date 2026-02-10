@@ -1,3 +1,8 @@
+export interface CommentsInterface {
+  comment: string;
+  createdAt: number;
+  userName: string;
+}
 export interface Ticket {
   formId: number;
 
@@ -16,7 +21,7 @@ export interface Ticket {
   priority: "Baja" | "Media" | "Alta";
 
   assignedTo?: string;
-  comments?: string[];
+  comments?: CommentsInterface[];
 }
 
 export interface TicketFilters {

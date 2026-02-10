@@ -17,14 +17,13 @@ async function getTicketById(id: number) {
 
 async function createTicket(ticket: Ticket): Promise<Ticket> {
   const res = await ticketConnect.post<Ticket>("/api/form", ticket);
-  console.log(res);
   
   return res.data;
 }
 
 
-async function addTicketComment(id: number, comment: string) {
-  const res = await ticketConnect.patch("/api/form", { id, comment });
+async function addTicketComment(id: number, comment: string, userId?: string) {
+  const res = await ticketConnect.patch("/api/form", { id, comment, userId });
   return res.data;
 }
 

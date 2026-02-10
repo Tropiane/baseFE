@@ -10,7 +10,6 @@ const login = async (data: User)=>{
             email: data.email,
             password: data.password
         });
-        console.log(res.data.rest);
         
         return {accessToken: res.data.accessToken, refreshToken: res.data.refreshToken, user: res.data.rest};
     } catch (error) {
@@ -20,9 +19,7 @@ const login = async (data: User)=>{
 }
 
 const logout = async (id:string)=>{
-    try {
-        console.log("id is",id);
-        
+    try {        
         const res = await userConnect.post('/api/user/logout', { id});
         return res.data;
     } catch (error) {
