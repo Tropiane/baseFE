@@ -29,9 +29,9 @@ export function TicketTarget(data: Ticket){
         if(addComment.length == 0) return;
         
         showTicketAlert("Comentario Agregado", "success");
-        await addTicketComment(data.formId, addComment);
+        await addTicketComment(data.formId, addComment, user?.name);
         setComment('');
-        setComments([...comments, {comment: addComment, createdAt: Date.now(), userName: user?.name || ""}]);
+        setComments([...comments, {comment: addComment, createdAt: Date.now(), user: user?.name || ""}]);
     };
 
     const handleDelete = async(e: React.MouseEvent<HTMLButtonElement>)=>{

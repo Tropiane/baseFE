@@ -1,7 +1,7 @@
 export interface CommentsInterface {
   comment: string;
   createdAt: number;
-  userName: string;
+  user: string;
 }
 export interface Ticket {
   formId: number;

@@ -21,7 +21,7 @@ export const ViewTicket = () => {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState<CommentsInterface[]>([]);
   const [status, setStatus] = useState("");
-
+  
   useEffect(() => {
     const fetchTicket = async () => {
       if (!id) return;
@@ -34,6 +34,7 @@ export const ViewTicket = () => {
     fetchTicket();
   }, [id]);
   
+  
   /* ======================
      ACTIONS
   ====================== */
@@ -42,8 +43,8 @@ export const ViewTicket = () => {
     const newComment = comment.trim().toLowerCase();
     if (!newComment || !data) return;
     
-    await addTicketComment(data.formId, newComment, user?._id);
-    setComments(prev => [...prev, {comment: newComment, createdAt: Date.now(), userName: user?.name || ""}]);
+    await addTicketComment(data.formId, newComment, user?.name);
+    setComments(prev => [...prev, {comment: newComment, createdAt: Date.now(), user: user?.name || ""}]);
     setComment("");
 
     showTicketAlert("Comentario agregado", "success");
@@ -169,18 +170,20 @@ export const ViewTicket = () => {
         <div className="space-y-3">
           <p className="text-xs text-gray-500">Comentarios</p>
 
-          {comments.map((c, i) => (
+          {comments?.map((c, i) => (
             <div
               key={i}
               className="bg-gray-50 border rounded-xl p-3 text-sm"
             >
               <p>{c.comment}</p>
-              <ul>
-                <li>{c.userName}</li>
+              <ul className="flex justify-between text-xs text-gray-500">
+                <li>{c.user}</li>
                 <li>{new Date(c.createdAt).toLocaleString()}</li>
               </ul>
             </div>
           ))}
+
+          
 
           <textarea
             placeholder="Agregar comentario"

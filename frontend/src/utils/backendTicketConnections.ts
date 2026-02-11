@@ -22,8 +22,8 @@ async function createTicket(ticket: Ticket): Promise<Ticket> {
 }
 
 
-async function addTicketComment(id: number, comment: string, userId?: string) {
-  const res = await ticketConnect.patch("/api/form", { id, comment, userId });
+async function addTicketComment(id: number, comment: string, userName?: string) {
+  const res = await ticketConnect.patch("/api/form", { id, comment, userName });
   return res.data;
 }
 

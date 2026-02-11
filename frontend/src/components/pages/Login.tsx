@@ -36,8 +36,8 @@ export const Login = ()=>{
         if(res === 500) return showLoginAlert("error al iniciar sesion", "error");
         
         showLoginAlert("Inicio de sesion exitoso", "success");
-        setToken(res.accessToken);
         localStorage.setItem("refreshToken", res.refreshToken);
+        setToken(res.accessToken);
         setUser(res.user);
 
         // setTimeout(() => location.href = "/tickets-manager", 2000);
