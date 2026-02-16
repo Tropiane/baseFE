@@ -1,6 +1,7 @@
 import { ticketConnect } from "./axios.connection";
 
 import type { Ticket } from "../components/tickets/TicketInterfaces";
+import { getAuthToken } from "./auth.token";
 
 async function getTickets() {
   const res = await ticketConnect.get<Ticket[]>("/api/form");
@@ -11,7 +12,11 @@ async function getTickets() {
 }
 
 async function getTicketById(id: number) {
-  const res = await ticketConnect.get<Ticket>(`/api/form/${id}`);
+  const token = getAuthToken();
+  const res = await ticketConnect.get<Ticket>(`/api/form/${id}`,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+  }});
   return res.data;
 }
 

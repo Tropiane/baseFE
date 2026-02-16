@@ -5,6 +5,7 @@ import Main from './layouts/main/main'
 import Footer from './layouts/footer/footer'
 import { UserProvider } from './providers/UserProvider'
 import { Section } from './layouts/section/Section'
+import { TicketsProvider } from './providers/TicketsProvider'
 
 
 function App() {
@@ -13,10 +14,14 @@ function App() {
     <>
     <BrowserRouter>
       <UserProvider>
+        <TicketsProvider>
+
           <Header></Header>
           <Section></Section>
           <Main></Main>
           <Footer></Footer>
+          
+        </TicketsProvider>
       </UserProvider>
     </BrowserRouter>
     </>

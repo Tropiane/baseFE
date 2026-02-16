@@ -2,38 +2,31 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 
-import type { CommentsInterface, Ticket } from "./TicketInterfaces";
-import {
-  getTicketById,
-  addTicketComment,
-  changeTicketStatus,
-  deleteTicket
-} from "../../utils/backendTicketConnections";
 import { showTicketAlert } from "../../utils/alerts";
 import { UserContext } from "../../hooks/UserContext";
+import { TicketsContext } from "../../hooks/TicketsContext";
 
 export const ViewTicket = () => {
-  const {user} = useContext(UserContext);
   const { id } = useParams();
+
+  const {user} = useContext(UserContext);
+  const {getTicketById, selectedTicket, addTicketComment, changeTicketStatus, deleteTicket} = useContext(TicketsContext);
   const navigate = useNavigate();
 
-  const [data, setData] = useState<Ticket | null>(null);
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState<CommentsInterface[]>([]);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(""); 
   
   useEffect(() => {
-    const fetchTicket = async () => {
-      if (!id) return;
-      const res = await getTicketById(Number(id));
-      setData(res);      
-      setComments(res.comments || []);
-      setStatus(res.status);
-    };
-
-    fetchTicket();
-  }, [id]);
-  
+    try {
+      if (id) {
+        getTicketById(Number(id));
+        
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }, [selectedTicket, id, getTicketById]);
   
   /* ======================
      ACTIONS
@@ -41,10 +34,10 @@ export const ViewTicket = () => {
 
   const submitComment = async () => {
     const newComment = comment.trim().toLowerCase();
-    if (!newComment || !data) return;
+    if (!newComment || !selectedTicket) return;
     
-    await addTicketComment(data.formId, newComment, user?.name);
-    setComments(prev => [...prev, {comment: newComment, createdAt: Date.now(), user: user?.name || ""}]);
+    await addTicketComment(selectedTicket.formId, newComment, user?.name);
+    // setComments(prev => [...prev, {comment: newComment, createdAt: Date.now(), user: user?.name || ""}]);
     setComment("");
 
     showTicketAlert("Comentario agregado", "success");
@@ -53,7 +46,7 @@ export const ViewTicket = () => {
   const handleStatusChange = async (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    if (!data) return;
+    if (!selectedTicket) return;
     const newStatus = e.target.value;
 
     if (!["Pendiente", "En Curso", "Finalizado"].includes(newStatus)) return;
@@ -63,14 +56,14 @@ export const ViewTicket = () => {
       "success"
     );
     setStatus(newStatus);
-    await changeTicketStatus(data.formId, newStatus, user?.name);
+    await changeTicketStatus(selectedTicket.formId, newStatus, user?.name);
 
   };
 
   const handleDelete = async () => {
-    if (!data) return;
+    if (!selectedTicket) return;
 
-    await deleteTicket(data.formId);
+    await deleteTicket(selectedTicket.formId);
     showTicketAlert("Ticket eliminado", "success");
 
     navigate("/tickets"); // ajustá a tu ruta real
@@ -80,7 +73,7 @@ export const ViewTicket = () => {
      UI
   ====================== */
 
-  if (!data) {
+  if (!selectedTicket) {
     return (
       <div className="min-h-screen flex items-center justify-center text-gray-500">
         Cargando ticket...
@@ -95,7 +88,7 @@ export const ViewTicket = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <h1 className="text-2xl font-semibold">
-            Ticket #{data.formId}
+            Ticket #{selectedTicket.formId}
           </h1>
 
           <div className="flex gap-3">
@@ -103,7 +96,10 @@ export const ViewTicket = () => {
               {status}
             </span>
             <span className="px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-700">
-              Prioridad: {data.priority || "Sin prioridad"}
+              Prioridad: {selectedTicket.priority || "Sin prioridad"}
+            </span>
+            <span className="px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-500">
+              Estado: {selectedTicket.status}
             </span>
           </div>
         </div>
@@ -112,22 +108,22 @@ export const ViewTicket = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <p className="text-xs text-gray-500">Nombre</p>
-            <p className="font-medium">{data.name}</p>
+            <p className="font-medium">{selectedTicket.name}</p>
           </div>
 
           <div>
             <p className="text-xs text-gray-500">Email</p>
-            <p className="font-medium">{data.email}</p>
+            <p className="font-medium">{selectedTicket.email}</p>
           </div>
 
           <div>
             <p className="text-xs text-gray-500">Teléfono</p>
             <a
-              href={`https://wa.me/+598${data.phone}`}
+              href={`https://wa.me/+598${selectedTicket.phone}`}
               target="_blank"
               className="flex items-center gap-1 text-blue-600"
             >
-              {data.phone} <FaWhatsapp className="text-green-500" />
+              {selectedTicket.phone} <FaWhatsapp className="text-green-500" />
             </a>
           </div>
         </div>
@@ -142,6 +138,7 @@ export const ViewTicket = () => {
             onChange={handleStatusChange}
             className="border rounded-lg p-2"
           >
+            <option value="">{selectedTicket.status}</option>
             <option value="Pendiente">Pendiente</option>
             <option value="En Curso">En Curso</option>
             <option value="Finalizado">Finalizado</option>
@@ -150,10 +147,10 @@ export const ViewTicket = () => {
 
         {/* Fechas */}
           <div className="mt-4 ">
-            <div className="border-b-2 w-fit p-1">Creado el: <span className="font-bold">{new Date(data.sendAt).toLocaleString()} </span></div>
-            <div className="border-b-2 w-fit p-1">Fecha limite: <span className="font-bold">{data.limitDate ? new Date(data.limitDate).toLocaleString() : "N/A"} </span></div>
-            <div className="border-b-2 w-fit p-1">Cerrado el: <span className="font-bold">{data.closedAt ? new Date(data.closedAt).toLocaleString() : "N/A"} </span></div>
-            <div>Cerrado por: <span className="font-bold">{data.closedBy || "N/A"} </span></div>
+            <div className="border-b-2 w-fit p-1">Creado el: <span className="font-bold">{new Date(selectedTicket.sendAt).toLocaleString()} </span></div>
+            <div className="border-b-2 w-fit p-1">Fecha limite: <span className="font-bold">{selectedTicket.limitDate ? new Date(selectedTicket.limitDate).toLocaleString() : "N/A"} </span></div>
+            <div className="border-b-2 w-fit p-1">Cerrado el: <span className="font-bold">{selectedTicket.closedAt ? new Date(selectedTicket.closedAt).toLocaleString() : "N/A"} </span></div>
+            <div>Cerrado por: <span className="font-bold">{selectedTicket.closedBy || "N/A"} </span></div>
           </div>
 
         {/* Descripción */}
@@ -162,7 +159,7 @@ export const ViewTicket = () => {
             Descripción
           </p>
           <div className="bg-gray-50 border rounded-xl p-4 text-sm">
-            {data.description}
+            {selectedTicket.description}
           </div>
         </div>
 
@@ -170,12 +167,12 @@ export const ViewTicket = () => {
         <div className="space-y-3">
           <p className="text-xs text-gray-500">Comentarios</p>
 
-          {comments?.map((c, i) => (
+          {selectedTicket.comments?.map((c, i) => (
             <div
               key={i}
               className="bg-gray-50 border rounded-xl p-3 text-sm"
             >
-              <p>{c.comment}</p>
+              <p>{c?.comment}</p>
               <ul className="flex justify-between text-xs text-gray-500">
                 <li>{c.user}</li>
                 <li>{new Date(c.createdAt).toLocaleString()}</li>

@@ -5,6 +5,7 @@ import type { CommentsInterface, Ticket } from "./TicketInterfaces";
 import { addTicketComment, changeTicketStatus, deleteTicket } from "../../utils/backendTicketConnections";
 import { showTicketAlert } from "../../utils/alerts";
 import { UserContext } from "../../hooks/UserContext";
+import { Link } from "react-router-dom";
 
 export function TicketTarget(data: Ticket){
   const {user} = useContext(UserContext);
@@ -232,7 +233,12 @@ return (
         Eliminar ticket
       </button>
     </div>
-    <a href={`/view-ticket/${data.formId}`} className="text-blue-600 text-2xl font-bold text-center border border-gray-300 p-2 rounded-full hover:bg-gray-100" target="_blank">ver</a>
+    <Link
+  to={`/view-ticket/${data.formId}`}
+  className="text-blue-600 text-2xl font-bold text-center border border-gray-300 p-2 rounded-full hover:bg-gray-100"
+>
+  ver
+</Link>
   </div>
 );
 
