@@ -167,7 +167,7 @@ export const ViewTicket = () => {
         <div className="space-y-3">
           <p className="text-xs text-gray-500">Comentarios</p>
 
-          {selectedTicket.comments?.map((c, i) => (
+          {selectedTicket?.comments?.map((c, i) => (
             <div
               key={i}
               className="bg-gray-50 border rounded-xl p-3 text-sm"

@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import type { CommentsInterface, Ticket } from "./TicketInterfaces";
+import type {  Ticket } from "./TicketInterfaces";
 import { addTicketComment, changeTicketStatus, deleteTicket } from "../../utils/backendTicketConnections";
 import { showTicketAlert } from "../../utils/alerts";
 import { UserContext } from "../../hooks/UserContext";
@@ -10,12 +10,7 @@ import { Link } from "react-router-dom";
 export function TicketTarget(data: Ticket){
   const {user} = useContext(UserContext);
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState<CommentsInterface[]>(data.comments || []);
   const [status, setStatus] = useState(data.status || '');
-  
-    useEffect(() => {
-        setComments(data.comments || []);
-    }, [data.comments]);
 
     //Ticket Actions
     const handleComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,7 +27,6 @@ export function TicketTarget(data: Ticket){
         showTicketAlert("Comentario Agregado", "success");
         await addTicketComment(data.formId, addComment, user?.name);
         setComment('');
-        setComments([...comments, {comment: addComment, createdAt: Date.now(), user: user?.name || ""}]);
     };
 
     const handleDelete = async(e: React.MouseEvent<HTMLButtonElement>)=>{
@@ -175,7 +169,7 @@ return (
         Comentarios
       </h4>
 
-      {comments?.map((comment) => (
+      {data.comments?.map((comment) => (
         <li key={comment.comment} className="text-sm text-gray-700 border-b pb-1">
           {comment.comment}
         </li>
