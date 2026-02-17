@@ -5,6 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { showTicketAlert } from "../../utils/alerts";
 import { UserContext } from "../../hooks/UserContext";
 import { TicketsContext } from "../../hooks/TicketsContext";
+import type { CommentsInterface } from "./TicketInterfaces";
 
 export const ViewTicket = () => {
   const { id } = useParams();
@@ -14,12 +15,14 @@ export const ViewTicket = () => {
   const navigate = useNavigate();
 
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState<CommentsInterface[]>([]);
   const [status, setStatus] = useState(""); 
   
   useEffect(() => {
     try {
       if (id) {
         getTicketById(Number(id));
+        setComments(selectedTicket?.comments || []);
         
       }
     } catch (error) {
@@ -167,7 +170,8 @@ export const ViewTicket = () => {
         <div className="space-y-3">
           <p className="text-xs text-gray-500">Comentarios</p>
 
-          {selectedTicket?.comments?.map((c, i) => (
+
+          {comments.length > 0 ? comments.map((c, i) => (
             <div
               key={i}
               className="bg-gray-50 border rounded-xl p-3 text-sm"
@@ -178,7 +182,12 @@ export const ViewTicket = () => {
                 <li>{new Date(c.createdAt).toLocaleString()}</li>
               </ul>
             </div>
-          ))}
+          )) 
+           :
+          <div className="bg-gray-50 border rounded-xl p-3 text-sm">
+            <p>No hay comentarios</p>
+          </div>
+          }
 
           
 
