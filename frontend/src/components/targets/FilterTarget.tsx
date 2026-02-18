@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type { Ticket } from "../tickets/TicketInterfaces";
+import { Link } from "react-router-dom";
 
 interface FilterTargetProps {
   name: string;
@@ -88,19 +89,12 @@ export const FilterTarget: React.FC<FilterTargetProps> = ({
 
               {/* Footer */}
               <div className="flex justify-end">
-                <a
-                  href={`/view-ticket/${ticket.formId}`}
-                  target="_blank"
-                  className="
-                    text-xs font-medium
-                    px-3 py-1 rounded-lg
-                    border border-blue-600 text-blue-600
-                    hover:bg-blue-600 hover:text-white
-                    transition
-                  "
+                <Link
+                  to={`/view-ticket/${ticket.formId}`}
+                  className="text-blue-600 text-2xl font-bold text-center border border-gray-300 p-2 rounded-full hover:bg-gray-100"
                 >
-                  Ver ticket
-                </a>
+                  ver
+                </Link>
               </div>
             </div>
           ))}

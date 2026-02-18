@@ -29,6 +29,7 @@ export const TicketsFilter = () => {
         <FilterTarget name="Alta" quantity={priorityAlta.length} color="bg-red-500" tickets={priorityAlta}/>
         <FilterTarget name="Media" quantity={priorityMedia.length} color="bg-yellow-500" tickets={priorityMedia}/>
         <FilterTarget name="Baja" quantity={priorityBaja.length} color="bg-green" tickets={priorityBaja}/>
+        
         </div>
       </div>
     </section>

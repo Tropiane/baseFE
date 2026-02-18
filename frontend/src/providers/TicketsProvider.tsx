@@ -38,8 +38,8 @@ export const TicketsProvider = ({ children } : { children: React.ReactNode }) =>
         await deleteTicket(id);
     }
 
-    const pChangeTicketStatus = async (id: number, status: string) => {
-        const res = await changeTicketStatus(id, status);
+    const pChangeTicketStatus = async (id: number, status: string, user?: string) => {
+        const res = await changeTicketStatus(id, status, user);
         return res;
     }
 

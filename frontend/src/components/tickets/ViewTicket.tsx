@@ -8,9 +8,9 @@ import { TicketsContext } from "../../hooks/TicketsContext";
 import type { CommentsInterface } from "./TicketInterfaces";
 
 export const ViewTicket = () => {
+  const {user} = useContext(UserContext);
   const { id } = useParams();
 
-  const {user} = useContext(UserContext);
   const {getTicketById, selectedTicket, addTicketComment, changeTicketStatus, deleteTicket} = useContext(TicketsContext);
   const navigate = useNavigate();
 
@@ -46,22 +46,22 @@ export const ViewTicket = () => {
     showTicketAlert("Comentario agregado", "success");
   };
 
-  const handleStatusChange = async (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    if (!selectedTicket) return;
-    const newStatus = e.target.value;
-
-    if (!["Pendiente", "En Curso", "Finalizado"].includes(newStatus)) return;
-
-    showTicketAlert(
-      `Estado cambiado a ${newStatus}`,
-      "success"
-    );
-    setStatus(newStatus);
-    await changeTicketStatus(selectedTicket.formId, newStatus, user?.name);
-
-  };
+  const changeStatus = async(e: React.ChangeEvent<HTMLSelectElement>)=>{
+        const status = e.target.value;
+        
+        if(status.length == 0 || status != "Pendiente" && status != "En Curso" && status != "Finalizado") return;
+        if (!selectedTicket) return;
+        
+        try {
+            setStatus(status);
+            
+            showTicketAlert(`Se ha cambiado el estado del ticket a ${status}`, "success");
+            return await changeTicketStatus(selectedTicket.formId, status, user?.name);
+        } catch (error) {
+            console.log('Error cambiando el estado', error);
+        }
+        
+    }
 
   const handleDelete = async () => {
     if (!selectedTicket) return;
@@ -138,7 +138,7 @@ export const ViewTicket = () => {
           </label>
           <select
             value={status}
-            onChange={handleStatusChange}
+            onChange={changeStatus}
             className="border rounded-lg p-2"
           >
             <option value="">{selectedTicket.status}</option>
