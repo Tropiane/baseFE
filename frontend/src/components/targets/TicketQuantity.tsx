@@ -1,4 +1,5 @@
-import { useTickets } from "../../hooks/useTickets"
+import { useTickets } from "../../hooks/useTickets";
+import { TicketsManager } from "../tickets/TicketsFilterManager";
 
 export const TicketQuantity = () => {
   const {
@@ -7,6 +8,8 @@ export const TicketQuantity = () => {
     inProgressTickets,
     pendingTickets
   } = useTickets()
+
+  const {overdueTickets} = TicketsManager();
 
   return (
     <section className="w-full flex flex-wrap justify-between gap-4">
@@ -21,6 +24,17 @@ export const TicketQuantity = () => {
         </p>
       </div>
 
+      {/* Atrasados */
+      overdueTickets.length > 0 && (
+        <div className="flex-1 min-w-[220px] bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
+          <p className="text-sm font-medium text-gray-500">
+            Atrasados
+          </p>
+          <p className="text-3xl font-bold text-red-600 mt-2">
+            {overdueTickets.length}
+          </p>
+        </div>
+      )}
       {/* Pendientes */}
       <div className="flex-1 min-w-[220px] bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
         <p className="text-sm font-medium text-gray-500">
