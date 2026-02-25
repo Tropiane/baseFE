@@ -23,10 +23,10 @@ export const TicketsManager = () => {
     <section className="w-full min-h-auto bg-gray-100 px-6 py-8 space-y-6">
       <h2 className="text-2xl font-semibold text-center text-gray-800">Tickets por estado</h2>
       {/* PENDIENTES */}
-      <details className="group bg-gray-400 rounded-2xl shadow-sm border border-gray-200">
-        <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-xl font-semibold text-blue-700">
+      <details className="group bg-nexo-neutral rounded-2xl">
+        <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-xl font-semibold text-gray-800">
           <span>Pendientes</span>
-          <span className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+          <span className="text-sm bg-blue-100 text-nexo-primary px-3 py-1 rounded-full">
             {pendingTickets.length}
           </span>
         </summary>
@@ -39,10 +39,10 @@ export const TicketsManager = () => {
       </details>
 
       {/* EN CURSO */}
-      <details className="group bg-gray-400 rounded-2xl shadow-sm border border-gray-200">
+      <details className="group bg-nexo-neutral rounded-2xl">
         <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-xl font-semibold text-green-600">
           <span>En curso</span>
-          <span className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
+          <span className="text-sm bg-green-100 text-nexo-deep px-3 py-1 rounded-full">
             {inProgressTickets.length}
           </span>
         </summary>
@@ -55,8 +55,8 @@ export const TicketsManager = () => {
       </details>
 
       {/* FINALIZADOS */}
-      <details className="group bg-gray-400 rounded-2xl shadow-sm border border-gray-200">
-        <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-xl font-semibold text-gray-700">
+      <details className="group bg-white rounded-2xl">
+        <summary className="cursor-pointer select-none flex justify-between items-center px-6 py-4 text-xl font-semibold text-gray-400">
           <span>Finalizados</span>
           <span className="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
             {closedTickets.length}

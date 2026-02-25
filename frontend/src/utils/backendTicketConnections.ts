@@ -21,6 +21,7 @@ async function getTicketById(id: number) {
 }
 
 async function createTicket(ticket: Ticket): Promise<Ticket> {
+  console.log(ticket);
   const res = await ticketConnect.post<Ticket>("/api/form", ticket);
   
   return res.data;

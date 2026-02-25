@@ -111,7 +111,7 @@ return (
           text-sm 
           px-2 py-1 
           rounded-full 
-          bg-gray-100 
+          bg-nexo-neutral 
           inline-block
         `}
       >
@@ -146,7 +146,7 @@ return (
     </div>
 
     {/* Descripción */}
-    <p className="text-gray-700 text-sm leading-relaxed bg-blue-50 p-3 rounded-lg">
+    <p className="text-gray-700 text-sm leading-relaxed bg-nexo-background p-3 rounded-lg">
       {data.description}
     </p>
 
@@ -164,7 +164,7 @@ return (
     </div>
 
     {/* Comentarios */}
-    <ul className="flex flex-col gap-2 bg-gray-50 p-3 rounded-xl">
+    <ul className="flex flex-col gap-2 p-3 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-800 text-center">
         Comentarios
       </h4>
@@ -198,12 +198,12 @@ return (
         type="submit"
         onClick={submitComment}
         className="
-          bg-blue-600 
+          bg-nexo-primary 
           text-white 
           px-4 
           py-2 
           rounded-lg 
-          hover:bg-blue-700 
+          hover:bg-green-700 
           transition
           w-1/2
         "
@@ -214,7 +214,7 @@ return (
       <button
         onClick={handleDelete}
         className="
-          bg-red-600 
+          bg-nexo-accent 
           text-white 
           px-4 
           py-2 
@@ -229,7 +229,7 @@ return (
     </div>
     <Link
   to={`/view-ticket/${data.formId}`}
-  className="text-blue-600 text-2xl font-bold text-center border border-gray-300 p-2 rounded-full hover:bg-gray-100"
+  className="text-nexo-deep text-2xl font-bold text-center border border-gray-300 p-2 rounded-full hover:bg-gray-100"
 >
   ver
 </Link>

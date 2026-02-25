@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-nexo-accent: #CDB4DB;
+  --color-nexo-background: #F8FAFC;
+  --color-nexo-neutral: #E2E8F0;
+  --color-nexo-primary: #6BA3A8;
+  --color-nexo-deep: #111827;
+}
+
 .fontNav {
   font-family: "Lato", sans-serif;
   font-weight: 400;

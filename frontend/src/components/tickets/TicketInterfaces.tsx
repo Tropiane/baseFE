@@ -15,6 +15,8 @@ export interface Ticket {
   closedAt?: number | null;
   updatedAt?: number;
   closedBy?: string;
+  linkName?: string;
+  linkUrl?: string;
   limitDate?: number;
 
   status: "Pendiente" | "En Curso" | "Finalizado";

@@ -98,10 +98,10 @@ export const ViewTicket = () => {
             <span className={`px-3 py-1 rounded-full text-sm font-medium ticketStatus ${status.toLowerCase()}`}>
               {status}
             </span>
-            <span className="px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-700">
+            <span className="px-3 py-1 rounded-full text-sm font-medium bg-nexo-accent">
               Prioridad: {selectedTicket.priority || "Sin prioridad"}
             </span>
-            <span className="px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-500">
+            <span className="px-3 py-1 rounded-full text-sm font-medium bg-nexo-background">
               Estado: {selectedTicket.status}
             </span>
           </div>
@@ -161,9 +161,19 @@ export const ViewTicket = () => {
           <p className="text-xs text-gray-500 mb-1">
             Descripción
           </p>
-          <div className="bg-gray-50 border rounded-xl p-4 text-sm">
+          <div className="bg-nexo-background rounded-xl p-4 text-sm">
             {selectedTicket.description}
           </div>
+        </div>
+
+        {/* Enlaces */}
+        <div>
+          <p className="text-xs text-gray-500">Enlaces adjuntos</p>
+          <div className=" flex flex-row gap-2 bg-nexo-background rounded-xl p-4 text-sm">
+            <p className="text-gray-500">{selectedTicket.linkName}:</p>
+            <a href={selectedTicket.linkUrl} target="_blank" className="text-blue-600 font-bold">{selectedTicket.linkUrl}</a>
+          </div>
+            
         </div>
 
         {/* Comentarios */}
@@ -174,7 +184,7 @@ export const ViewTicket = () => {
           {comments.length > 0 ? comments.map((c, i) => (
             <div
               key={i}
-              className="bg-gray-50 border rounded-xl p-3 text-sm"
+              className="bg-nexo-neutral border rounded-xl p-3 text-sm"
             >
               <p>{c?.comment}</p>
               <ul className="flex justify-between text-xs text-gray-500">
@@ -201,14 +211,14 @@ export const ViewTicket = () => {
           <div className="flex gap-4">
             <button
               onClick={submitComment}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg w-1/2"
+              className="bg-nexo-deep text-white px-4 py-2 rounded-lg w-1/2"
             >
               Agregar comentario
             </button>
 
             <button
               onClick={handleDelete}
-              className="bg-red-600 text-white px-4 py-2 rounded-lg w-1/2"
+              className="bg-nexo-accent text-white px-4 py-2 rounded-lg w-1/2"
             >
               Eliminar ticket
             </button>

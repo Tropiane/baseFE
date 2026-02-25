@@ -30,12 +30,12 @@ function NavBar({ isFooter }: { isFooter: boolean }) {
   /* FOOTER */
   if (isFooter) {
     return (
-      <nav className="flex flex-col items-center gap-4 py-6 text-gray-400">
+      <nav className="flex flex-col items-center gap-4 py-6 text-nexo-primary">
         {enlaces.map(e => (
           <NavLink
             key={e.id}
             to={e.link}
-            className="hover:text-blue-500 transition"
+            className="hover:text-nexo-accent transition"
           >
             {e.text}
           </NavLink>
@@ -48,13 +48,13 @@ function NavBar({ isFooter }: { isFooter: boolean }) {
   if (!user) {
     return (
       <nav className="flex flex-col items-center gap-4 py-6 text-gray-400">
-        <a href="/login" className=" text-2xl text-amber-50 hover:text-blue-500 transition">Iniciar sesion <IoLogIn /></a>
+        <a href="/login" className=" text-2xl text-amber-50 hover:text-nexo-accent transition">Iniciar sesion <IoLogIn /></a>
       </nav>
     );
   }
 
   return (
-    <aside className="hidden md:flex flex-col w-20 bg-white border-r rounded-2xl border-gray-200 shadow-sm items-center py-6 gap-8">
+    <aside className="hidden md:flex flex-col w-20 rounded-2x items-center py-6 gap-8">
       
       {enlaces.map(e => (
         <NavLink
@@ -67,8 +67,8 @@ function NavBar({ isFooter }: { isFooter: boolean }) {
             text-2xl transition
             ${
               isActive
-                ? "bg-blue-100 text-blue-600"
-                : "text-gray-400 hover:text-blue-500 hover:bg-gray-100"
+                ? "bg-blue-100 text-nexo-accent"
+                : "text-gray-700 text-3xl hover:text-nexo-deep hover:bg-gray-100"
             }
             `
           }

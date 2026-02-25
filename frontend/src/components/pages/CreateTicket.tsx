@@ -11,6 +11,8 @@ export const CreateTicket = () => {
 
     description: "",
     assignedTo: "",
+    linkName: "",
+    linkUrl: "",
     limitDate: "",
 
     status: "Pendiente" as Ticket["status"],
@@ -60,6 +62,8 @@ export const CreateTicket = () => {
         phone: "",
         description: "",
         assignedTo: "",
+        linkName: "",
+        linkUrl: "",
         limitDate: "",
         status: "Pendiente",
         priority: "Alta",
@@ -145,6 +149,28 @@ export const CreateTicket = () => {
             />
           </div>
 
+          {/* enlaces adicionales */}
+          <div>
+            <label className={labelClass}>Enlaces adicionales</label>
+            <div className="flex flex-row">
+                <input type="text" 
+              className={inputClass}
+              value={formData.linkName}
+              name="linkName"
+              placeholder="Nombre del enlace"
+              onChange={handleChange}/>
+
+              <input type="text"
+              className={inputClass} 
+              value={formData.linkUrl}
+              name="linkUrl"
+              placeholder="url"
+              onChange={handleChange}/>
+            </div>
+
+            
+          </div>
+
           {/* Fecha limite */}
           
           <div>
@@ -193,7 +219,7 @@ export const CreateTicket = () => {
           <div className="flex justify-end pt-4">
             <button
               type="submit"
-              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition"
+              className="px-6 py-2.5 rounded-xl bg-nexo-deep hover:bg-green-600 text-white text-sm font-medium transition"
             >
               Crear ticket
             </button>

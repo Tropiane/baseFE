@@ -30,7 +30,7 @@ export const Section = () => {
           Panel de administración
         </span>
         <h1 className="text-lg font-semibold text-gray-800">
-          Hola, <span className="text-blue-600">{user?.name || "No logueado"}</span>
+          Hola, <span className="text-nexo-deep">{user?.name || "No logueado"}</span>
         </h1>
       </div>
 
@@ -38,7 +38,7 @@ export const Section = () => {
       <div className="flex items-center gap-4">
         
         {/* Avatar (placeholder) */}
-        <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-semibold">
+        <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-nexo-accent font-semibold">
           {user?.name?.charAt(0)}
         </div>
 

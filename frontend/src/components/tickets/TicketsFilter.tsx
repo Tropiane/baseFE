@@ -21,14 +21,14 @@ export const TicketsFilter = () => {
 
         {/* Filtros */}
         <div className="flex flex-row flex-wrap justify-between w-full">
-        <FilterTarget name="Pendientes" quantity={statusPendiente.length} color="bg-blue-600" tickets={statusPendiente}/>
-        <FilterTarget name="En curso" quantity={statusEnCurso.length} color="bg-blue-500" tickets={statusEnCurso}/>
+        <FilterTarget name="Pendientes" quantity={statusPendiente.length} color="bg-nexo-primary" tickets={statusPendiente}/>
+        <FilterTarget name="En curso" quantity={statusEnCurso.length} color="bg-nexo-accent" tickets={statusEnCurso}/>
         <FilterTarget name="Finalizados" quantity={statusFinalizado.length} color="bg-gray-500" tickets={statusFinalizado}/>
-        <FilterTarget name="Hoy" quantity={todayTickets.length} color="bg-orange-600" tickets={todayTickets}/>
-        <FilterTarget name="Atrasados" quantity={overdueTickets.length} color="bg-red-600" tickets={overdueTickets}/>
-        <FilterTarget name="Alta" quantity={priorityAlta.length} color="bg-red-500" tickets={priorityAlta}/>
-        <FilterTarget name="Media" quantity={priorityMedia.length} color="bg-yellow-500" tickets={priorityMedia}/>
-        <FilterTarget name="Baja" quantity={priorityBaja.length} color="bg-green" tickets={priorityBaja}/>
+        <FilterTarget name="Hoy" quantity={todayTickets.length} color="bg-nexo-background" tickets={todayTickets}/>
+        <FilterTarget name="Atrasados" quantity={overdueTickets.length} color="bg-red-400" tickets={overdueTickets}/>
+        <FilterTarget name="Alta" quantity={priorityAlta.length} color="bg-nexo-accent" tickets={priorityAlta}/>
+        <FilterTarget name="Media" quantity={priorityMedia.length} color="bg-nexo-primary" tickets={priorityMedia}/>
+        <FilterTarget name="Baja" quantity={priorityBaja.length} color="bg-nexo-background" tickets={priorityBaja}/>
         
         </div>
       </div>

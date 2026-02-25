@@ -27,7 +27,11 @@ export const TicketsManager = ()=>{
     const overdueTickets = useMemo(() => 
         data.filter(ticket => {
             const dateValue = ticket.limitDate !== undefined ? ticket.limitDate : ticket.sendAt;
-            return new Date(dateValue).getTime() < getTodayRange().start;
+
+            if(ticket.status !== "Finalizado"){
+
+                return new Date(dateValue).getTime() < getTodayRange().start;
+            }
         }), 
     [data]);
     const allTickets = { priorityAlta, priorityBaja, priorityMedia, statusPendiente, statusEnCurso, statusFinalizado, todayTickets, overdueTickets};
