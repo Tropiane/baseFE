@@ -6,6 +6,8 @@ import { showTicketAlert } from "../../utils/alerts";
 import { UserContext } from "../../hooks/UserContext";
 import { TicketsContext } from "../../hooks/TicketsContext";
 import type { CommentsInterface } from "./TicketInterfaces";
+import { ToDoList } from "../to-do/ToDoList";
+import { AddTask } from "../to-do/AddTask";
 
 export const ViewTicket = () => {
   const {user} = useContext(UserContext);
@@ -15,6 +17,7 @@ export const ViewTicket = () => {
   const navigate = useNavigate();
 
   const [comment, setComment] = useState("");
+  const [addTaskOpen, setAddTaskOpen] = useState(false);
   const [comments, setComments] = useState<CommentsInterface[]>([]);
   const [status, setStatus] = useState(""); 
   
@@ -62,6 +65,10 @@ export const ViewTicket = () => {
         }
         
     }
+
+    const handleAddTask = () => {
+        setAddTaskOpen(!addTaskOpen);
+    };
 
   const handleDelete = async () => {
     if (!selectedTicket) return;
@@ -156,6 +163,13 @@ export const ViewTicket = () => {
             <div>Cerrado por: <span className="font-bold">{selectedTicket.closedBy || "N/A"} </span></div>
           </div>
 
+        {/* Tareas */}
+        <button onClick={handleAddTask} className="button-primary font-bold bg-nexo-accent text-nexo-deep rounded py-2 px-4 active:scale-95 hover:scale-105 transition">Agregar tarea</button>
+        {addTaskOpen && <AddTask/>}
+        <details>
+          <summary className="list-none">Ver tareas <span className="font-bold rounded bg-nexo-accent text-nexo-deep px-2">10</span></summary>
+          <ToDoList />
+        </details>
         {/* Descripción */}
         <div>
           <p className="text-xs text-gray-500 mb-1">
