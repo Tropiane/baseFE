@@ -24,11 +24,11 @@ export const TicketsFilter = () => {
         <FilterTarget name="Pendientes" quantity={statusPendiente.length} color="bg-nexo-primary" tickets={statusPendiente}/>
         <FilterTarget name="En curso" quantity={statusEnCurso.length} color="bg-nexo-accent" tickets={statusEnCurso}/>
         <FilterTarget name="Finalizados" quantity={statusFinalizado.length} color="bg-gray-500" tickets={statusFinalizado}/>
-        <FilterTarget name="Hoy" quantity={todayTickets.length} color="bg-nexo-background" tickets={todayTickets}/>
+        <FilterTarget name="Hoy" quantity={todayTickets.length} color="bg-nexo-deep" tickets={todayTickets}/>
         <FilterTarget name="Atrasados" quantity={overdueTickets.length} color="bg-red-400" tickets={overdueTickets}/>
         <FilterTarget name="Alta" quantity={priorityAlta.length} color="bg-nexo-accent" tickets={priorityAlta}/>
         <FilterTarget name="Media" quantity={priorityMedia.length} color="bg-nexo-primary" tickets={priorityMedia}/>
-        <FilterTarget name="Baja" quantity={priorityBaja.length} color="bg-nexo-background" tickets={priorityBaja}/>
+        <FilterTarget name="Baja" quantity={priorityBaja.length} color="bg-nexo-deep" tickets={priorityBaja}/>
         
         </div>
       </div>
